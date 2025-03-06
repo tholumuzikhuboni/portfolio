@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +27,7 @@ const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { toast } = useToast();
   const itemsPerPage = 6;
+  const projectsRef = useRef<HTMLDivElement>(null);
   
   const username = "tholumuzikhuboni";
   
@@ -58,6 +59,13 @@ const Projects = () => {
     }
   }, [isError, toast]);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    if (projectsRef.current) {
+      projectsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [currentPage]);
+
   const totalPages = repositories ? Math.ceil(repositories.length / itemsPerPage) : 0;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedRepos = repositories ? repositories.slice(startIndex, startIndex + itemsPerPage) : [];
@@ -79,7 +87,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-background pb-20 relative">
-      {/* Background elements */}
+      {/* Background elements - Enhanced with more animated elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/10 via-code-purple/10 to-code-pink/10 blur-3xl animate-pulse" />
         <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/10 via-code-green/10 to-code-blue/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
@@ -87,15 +95,41 @@ const Projects = () => {
         <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/50 animate-ping" style={{ animationDuration: '3s' }} />
         <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/50 animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
         <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/50 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+        <div className="absolute top-[35%] right-[40%] w-2 h-2 rounded-full bg-code-pink/50 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }} />
+        <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple/50 animate-ping" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
         
         <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
         <div className="absolute top-[45%] right-[20%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
+        
+        {/* Additional coding-related symbols */}
+        <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
+        <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
+        <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
+        
+        {/* Matrix-like falling elements */}
+        <div className="absolute inset-0 overflow-hidden opacity-10">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div 
+              key={i} 
+              className="absolute font-mono text-code-green"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 10}s linear infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+                opacity: 0.3 + Math.random() * 0.7
+              }}
+            >
+              {['0', '1', '<>', '/>', '{}', '[]'][Math.floor(Math.random() * 6)]}
+            </div>
+          ))}
+        </div>
       </div>
       
       <Navbar />
       
-      <main className="container mx-auto px-4 pt-32 relative z-10">
+      <main className="container mx-auto px-4 pt-32 relative z-10" ref={projectsRef}>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 gradient-text font-mono">Projects</h1>
