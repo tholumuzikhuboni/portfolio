@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
-import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail } from 'lucide-react';
+import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail, Linkedin, Instagram, Facebook, Tv } from 'lucide-react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -84,11 +84,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-nowrap gap-4 overflow-x-auto sm:flex-wrap"
           >
             <motion.a 
               href="#projects"
-              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2"
+              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap"
               whileHover={{ 
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
               }}
@@ -100,7 +100,7 @@ const HeroSection = () => {
             </motion.a>
             <motion.a 
               href="#contact"
-              className="group bg-transparent border border-code-purple/30 text-foreground py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2"
+              className="group bg-transparent border border-code-purple/30 text-foreground py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2 whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -125,7 +125,38 @@ const HeroSection = () => {
             >
               <Github className="h-5 w-5" />
             </a>
-            {/* You can add more social links here */}
+            <a 
+              href="https://linkedin.com/in/tholumuzi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-[#0A66C2] transition-colors p-2 rounded-full hover:bg-[#0A66C2]/10"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://instagram.com/tholumuzi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-[#E4405F] transition-colors p-2 rounded-full hover:bg-[#E4405F]/10"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://facebook.com/tholumuzi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-[#1877F2] transition-colors p-2 rounded-full hover:bg-[#1877F2]/10"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://tiktok.com/@tholumuzi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-[#000000] transition-colors p-2 rounded-full hover:bg-[#000000]/10"
+            >
+              <Tv className="h-5 w-5" />
+            </a>
           </motion.div>
         </div>
         
