@@ -15,18 +15,17 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 }) => {
   const [isRevealed, setIsRevealed] = useState(false);
 
-  // Parse and syntax highlight the code
   const formatCode = (rawCode: string) => {
     return rawCode
       .split('\n')
       .map((line, index) => {
-        // Replace keywords with spans
+        // Replace keywords with spans and appropriate color classes
         return line
-          .replace(/(const|let|var|function|return|import|export|from|if|else|for|while)/g, '<span class="code-keyword">$1</span>')
-          .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="code-string">$1</span>')
-          .replace(/(\{|\}|\[|\]|\(|\)|,|;)/g, '<span class="code-bracket">$1</span>')
-          .replace(/(\w+):/g, '<span class="code-property">$1</span>:')
-          .replace(/(\/\/.*)/g, '<span class="code-comment">$1</span>');
+          .replace(/(const|let|var|function|return|import|export|from|if|else|for|while)/g, '<span class="text-code-purple">$1</span>')
+          .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="text-code-green">$1</span>')
+          .replace(/(\{|\}|\[|\]|\(|\)|,|;)/g, '<span class="text-code-yellow">$1</span>')
+          .replace(/(\w+):/g, '<span class="text-code-blue">$1</span>:')
+          .replace(/(\/\/.*)/g, '<span class="text-code-gray">$1</span>');
       })
       .join('\n');
   };
@@ -40,7 +39,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
     >
       {isRevealed ? (
         <pre 
-          className="whitespace-pre overflow-x-auto"
+          className="whitespace-pre overflow-x-auto text-code-blue"
           dangerouslySetInnerHTML={{ __html: formattedCode }}
         />
       ) : (
@@ -48,6 +47,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
           text={code}
           delay={delay}
           className="whitespace-pre"
+          colorClassName="text-code-blue"
           onComplete={() => setIsRevealed(true)}
         />
       )}

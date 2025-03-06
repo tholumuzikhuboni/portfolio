@@ -75,12 +75,22 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-wrap gap-4"
           >
-            <button className="bg-primary text-primary-foreground py-3 px-6 rounded-md font-medium transition-transform hover:scale-[1.02] active:scale-[0.98]">
+            <motion.button 
+              className="bg-gradient-to-r from-code-blue to-code-purple text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+              whileHover={{ 
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
               View My Work
-            </button>
-            <button className="bg-transparent border border-primary/20 text-primary py-3 px-6 rounded-md font-medium transition-all hover:bg-primary/5">
+            </motion.button>
+            <motion.button 
+              className="bg-transparent border border-code-purple/20 text-foreground py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/50"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Contact Me
-            </button>
+            </motion.button>
           </motion.div>
         </div>
         

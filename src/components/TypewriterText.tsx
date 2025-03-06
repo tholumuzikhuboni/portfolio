@@ -6,13 +6,15 @@ interface TypewriterTextProps {
   delay?: number;
   className?: string;
   onComplete?: () => void;
+  colorClassName?: string;
 }
 
 const TypewriterText: React.FC<TypewriterTextProps> = ({ 
   text, 
   delay = 50, 
   className = '',
-  onComplete
+  onComplete,
+  colorClassName = 'text-code-blue' // Default color class
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,10 +35,10 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   }, [currentIndex, delay, text, onComplete, isComplete]);
 
   return (
-    <span className={className}>
+    <span className={`${className} ${colorClassName}`}>
       {displayText}
       {currentIndex < text.length && (
-        <span className="opacity-100 animate-cursor-blink">|</span>
+        <span className="opacity-100 animate-cursor-blink text-code-green">|</span>
       )}
     </span>
   );
