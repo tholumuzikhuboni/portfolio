@@ -69,29 +69,18 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
           transition={{ duration: 0.5 }}
           className="mb-8 relative"
         >
-          <div className="relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mb-2">
-            <div className="absolute inset-0 bg-gradient-to-r from-code-blue via-code-purple to-code-pink rounded-full opacity-20 animate-pulse"></div>
-            <motion.div 
-              className="absolute inset-2 border-2 border-code-blue/30 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div 
-              className="absolute inset-4 border-2 border-code-purple/30 rounded-full"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            />
-            <div className="relative flex items-center justify-center">
-              <Code className="h-8 w-8 sm:h-10 sm:w-10 text-code-purple" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 sm:h-4 sm:w-4 text-code-green animate-pulse" />
-              <Stars className="absolute -bottom-1 -left-1 h-3 w-3 sm:h-4 sm:w-4 text-code-yellow animate-pulse" style={{ animationDelay: '0.5s' }} />
-              <Atom className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-12 w-12 sm:h-14 sm:w-14 text-code-blue/10 animate-spin" style={{ animationDuration: '15s' }} />
-            </div>
-          </div>
-          
-          <span className="block text-center font-mono font-medium text-lg sm:text-xl md:text-2xl gradient-text">
+          {/* Text logo without the circular elements or Terminal icon */}
+          <span className="block text-center font-mono font-medium text-2xl sm:text-3xl md:text-4xl gradient-text mb-2">
             Tholumuzi.dev
           </span>
+          
+          {/* Floating background icons */}
+          <div className="absolute -z-10 opacity-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <Code className="absolute top-0 left-1/4 h-6 w-6 text-code-purple animate-float" style={{ animationDuration: '5s' }} />
+            <Sparkles className="absolute bottom-0 right-1/4 h-5 w-5 text-code-green animate-float" style={{ animationDuration: '6s', animationDelay: '0.3s' }} />
+            <Stars className="absolute top-1/2 left-3/4 h-5 w-5 text-code-yellow animate-float" style={{ animationDuration: '7s', animationDelay: '0.7s' }} />
+            <Zap className="absolute bottom-1/2 right-[10%] h-5 w-5 text-code-pink animate-float" style={{ animationDuration: '5.5s', animationDelay: '1s' }} />
+          </div>
         </motion.div>
         
         <div className="w-full max-w-xs sm:max-w-sm md:max-w-md space-y-2">
