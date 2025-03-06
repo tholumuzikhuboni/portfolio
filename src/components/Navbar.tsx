@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Code, Menu, Sparkles, Home, User, Briefcase, FolderCode, Mail } from 'lucide-react';
+import { Code, Menu, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,11 +24,11 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', icon: <Home className="h-4 w-4" />, href: '#home' },
-    { name: 'About', icon: <User className="h-4 w-4" />, href: '#about' },
-    { name: 'Skills', icon: <Briefcase className="h-4 w-4" />, href: '#skills' },
-    { name: 'Projects', icon: <FolderCode className="h-4 w-4" />, href: '#projects' },
-    { name: 'Contact', icon: <Mail className="h-4 w-4" />, href: '#contact' }
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   return (
@@ -56,14 +56,13 @@ const Navbar = () => {
               <a 
                 key={item.name} 
                 href={item.href}
-                className="relative text-sm font-medium font-mono text-foreground/80 hover:text-foreground transition-colors duration-200 flex items-center gap-2 group"
+                className="relative text-sm font-medium font-mono text-foreground/80 hover:text-foreground transition-colors duration-200 group"
               >
-                <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
-                  {item.icon}
-                </span>
                 <span className="relative z-10 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all group-hover:after:w-full">
                   {item.name}
                 </span>
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-code-purple scale-0 group-hover:scale-100 transition-all duration-300"></div>
+                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-code-blue scale-0 group-hover:scale-100 transition-all duration-300 delay-100"></div>
               </a>
             ))}
           </nav>
@@ -85,13 +84,15 @@ const Navbar = () => {
                 <a 
                   key={item.name} 
                   href={item.href}
-                  className="flex items-center gap-3 py-3 px-4 rounded-md text-sm font-medium font-mono text-foreground/80 hover:text-foreground hover:bg-gray-50 transition-colors duration-200"
+                  className="flex items-center gap-3 py-3 px-4 rounded-md text-sm font-medium font-mono text-foreground/80 hover:text-foreground hover:bg-gray-50 transition-colors duration-200 relative overflow-hidden"
                   onClick={() => setMenuOpen(false)}
                 >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-code-blue/10 to-code-purple/10">
-                    {item.icon}
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-code-blue/10 to-code-purple/10 relative">
+                    <span className="absolute w-1.5 h-1.5 rounded-full bg-code-pink -top-0.5 right-1 animate-pulse"></span>
+                    <span className="absolute w-1 h-1 rounded-full bg-code-blue bottom-1 left-0.5 animate-pulse delay-300"></span>
                   </div>
                   <span>{item.name}</span>
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-code-blue to-code-purple transition-all duration-300"></div>
                 </a>
               ))}
             </nav>
