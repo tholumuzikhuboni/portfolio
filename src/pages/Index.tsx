@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -9,7 +10,7 @@ const Index = () => {
   useEffect(() => {
     const minLoadTime = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 6000); // Increased to 6 seconds
     
     return () => clearTimeout(minLoadTime);
   }, []);
