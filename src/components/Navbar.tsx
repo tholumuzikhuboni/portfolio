@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Code, Github, Sparkles } from 'lucide-react';
+import { Code, Menu, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,10 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <header 
@@ -47,15 +52,32 @@ const Navbar = () => {
             ))}
           </nav>
           
-          <a 
-            href="https://github.com/tholumuzi" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <button 
+            onClick={toggleMenu}
             className="bg-[#333] rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:bg-[#24292e] hover:scale-105 hover:shadow-lg active:scale-95"
+            aria-label="Toggle navigation menu"
           >
-            <Github className="h-5 w-5 text-white" />
-          </a>
+            <Menu className="h-5 w-5 text-white" />
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {menuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg py-4 px-6 animate-fade-in">
+            <nav className="flex flex-col space-y-4">
+              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm font-medium font-mono text-foreground/80 hover:text-foreground transition-colors duration-200 py-2 border-b border-gray-100"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
 
         {/* Added visual highlights */}
         <div className="hidden md:block absolute top-1/2 -translate-y-1/2 -left-12 w-24 h-24 rounded-full bg-code-blue/5 blur-xl"></div>

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
@@ -120,34 +121,34 @@ const HeroSection = () => {
             className="flex items-center gap-4 pt-4"
           >
             <a 
-              href="https://github.com/tholumuzi" 
+              href="https://github.com/tholumuzikhubon" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#333] hover:text-[#2b3137] transition-colors p-2 rounded-full hover:bg-[#f6f8fa]"
+              className="bg-[#333] hover:bg-[#24292E] text-white rounded-full p-2 transition-all hover:scale-110 active:scale-95 flex items-center justify-center w-10 h-10"
             >
               <Github className="h-5 w-5" />
             </a>
             <a 
-              href="https://linkedin.com/in/tholumuzi" 
+              href="https://linkedin.com/in/tholumuzikhuboni" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#0A66C2] hover:text-[#004182] transition-colors p-2 rounded-full hover:bg-[#E6F2FF]"
+              className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded-full p-2 transition-all hover:scale-110 active:scale-95 flex items-center justify-center w-10 h-10"
             >
               <Linkedin className="h-5 w-5" />
             </a>
             <a 
-              href="https://instagram.com/tholumuzi" 
+              href="https://www.instagram.com/tholumuzikhuboni" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#E4405F] hover:text-[#C13584] transition-colors p-2 rounded-full hover:bg-[#FFEEF5]"
+              className="bg-gradient-to-br from-[#E4405F] to-[#C13584] hover:from-[#D93B57] hover:to-[#B52F7C] text-white rounded-full p-2 transition-all hover:scale-110 active:scale-95 flex items-center justify-center w-10 h-10"
             >
               <Instagram className="h-5 w-5" />
             </a>
             <a 
-              href="https://facebook.com/tholumuzi" 
+              href="https://www.facebook.com/profile.php?id=61560262494384" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#1877F2] hover:text-[#0E5FCF] transition-colors p-2 rounded-full hover:bg-[#E7F3FF]"
+              className="bg-[#1877F2] hover:bg-[#0E5FCF] text-white rounded-full p-2 transition-all hover:scale-110 active:scale-95 flex items-center justify-center w-10 h-10"
             >
               <Facebook className="h-5 w-5" />
             </a>
