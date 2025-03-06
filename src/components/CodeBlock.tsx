@@ -1,0 +1,58 @@
+
+import React, { useState, useEffect } from 'react';
+import TypewriterText from './TypewriterText';
+
+interface CodeBlockProps {
+  code: string;
+  className?: string;
+  delay?: number;
+}
+
+const CodeBlock: React.FC<CodeBlockProps> = ({ 
+  code, 
+  className = '',
+  delay = 30
+}) => {
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  // Parse and syntax highlight the code
+  const formatCode = (rawCode: string) => {
+    return rawCode
+      .split('\n')
+      .map((line, index) => {
+        // Replace keywords with spans
+        return line
+          .replace(/(const|let|var|function|return|import|export|from|if|else|for|while)/g, '<span class="code-keyword">$1</span>')
+          .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="code-string">$1</span>')
+          .replace(/(\{|\}|\[|\]|\(|\)|,|;)/g, '<span class="code-bracket">$1</span>')
+          .replace(/(\w+):/g, '<span class="code-property">$1</span>:')
+          .replace(/(\/\/.*)/g, '<span class="code-comment">$1</span>');
+      })
+      .join('\n');
+  };
+
+  const formattedCode = formatCode(code);
+
+  return (
+    <div 
+      className={`font-mono text-sm sm:text-base overflow-hidden rounded-lg bg-[#1a1a1a] p-4 sm:p-6 ${className}`}
+      style={{ boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)' }}
+    >
+      {isRevealed ? (
+        <pre 
+          className="whitespace-pre overflow-x-auto"
+          dangerouslySetInnerHTML={{ __html: formattedCode }}
+        />
+      ) : (
+        <TypewriterText 
+          text={code}
+          delay={delay}
+          className="whitespace-pre"
+          onComplete={() => setIsRevealed(true)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default CodeBlock;
