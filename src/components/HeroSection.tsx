@@ -66,9 +66,9 @@ const HeroSection = () => {
               <span className="mr-2 h-2 w-2 rounded-full bg-code-green animate-pulse"></span>
               <Terminal className="h-3 w-3 mr-1" /> Available for hire <Sparkles className="h-3 w-3 ml-1 text-code-yellow" />
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-mono">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight font-mono">
               <span className="block">Hello, I'm</span>
-              <span className="gradient-text mt-2 block relative">
+              <span className="gradient-text mt-2 block relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                 Tholumuzi Khuboni
                 <span className="absolute -bottom-2 left-0 h-1 w-24 bg-gradient-to-r from-code-blue to-code-purple rounded-full"></span>
               </span>
