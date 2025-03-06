@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Code, Menu, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState('home');
   
   useEffect(() => {
@@ -20,16 +22,26 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
+  useEffect(() => {
+    // Set active link based on the current path
+    const path = location.pathname;
+    if (path === '/') {
+      setActiveLink('home');
+    } else if (path === '/projects') {
+      setActiveLink('projects');
+    } else if (path === '/contact') {
+      setActiveLink('contact');
+    }
+  }, [location]);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', path: '/', id: 'home' },
+    { name: 'Projects', path: '/projects', id: 'projects' },
+    { name: 'Contact', path: '/contact', id: 'contact' }
   ];
 
   return (
@@ -41,7 +53,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <div className="relative">
               <Code className="h-6 w-6 text-code-purple group-hover:text-code-blue transition-colors duration-300" />
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-code-green animate-pulse" />
@@ -50,15 +62,15 @@ const Navbar = () => {
               Tholumuzi.dev
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink group-hover:w-full transition-all duration-700"></span>
             </span>
-          </div>
+          </Link>
           
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a 
+              <Link 
                 key={item.name} 
-                href={item.href}
+                to={item.path}
                 className="relative text-sm font-medium font-mono text-foreground/80 hover:text-foreground transition-colors duration-200 group"
-                onClick={() => setActiveLink(item.name.toLowerCase())}
+                onClick={() => setActiveLink(item.id)}
               >
                 <div className="relative z-10 overflow-hidden">
                   <span className="relative z-10">
@@ -66,7 +78,7 @@ const Navbar = () => {
                   </span>
                   <div className={cn(
                     "absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink transition-all duration-300 group-hover:w-full",
-                    activeLink === item.name.toLowerCase() && "w-full"
+                    activeLink === item.id && "w-full"
                   )}></div>
                 </div>
                 
@@ -84,15 +96,15 @@ const Navbar = () => {
                 {/* Highlight glow */}
                 <div className={cn(
                   "absolute inset-0 bg-gradient-to-r from-code-blue/0 via-code-purple/5 to-code-pink/0 opacity-0 rounded-md -z-10 blur-md transition-opacity duration-300 group-hover:opacity-100",
-                  activeLink === item.name.toLowerCase() && "opacity-50"
+                  activeLink === item.id && "opacity-50"
                 )}></div>
-              </a>
+              </Link>
             ))}
           </nav>
           
           <button 
             onClick={toggleMenu}
-            className="bg-gradient-to-r from-code-blue to-code-purple rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden group"
+            className="bg-gradient-to-r from-code-blue to-code-purple rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden group md:hidden"
             aria-label="Toggle navigation menu"
           >
             <Menu className="h-5 w-5 text-white relative z-10" />
@@ -106,12 +118,12 @@ const Navbar = () => {
           <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg py-4 px-6 animate-fade-in">
             <nav className="flex flex-col space-y-1">
               {navItems.map((item) => (
-                <a 
+                <Link
                   key={item.name} 
-                  href={item.href}
+                  to={item.path}
                   className="flex items-center gap-3 py-3 px-4 rounded-md text-sm font-medium font-mono text-foreground/80 hover:text-foreground relative overflow-hidden group transition-colors duration-200"
                   onClick={() => {
-                    setActiveLink(item.name.toLowerCase());
+                    setActiveLink(item.id);
                     setMenuOpen(false);
                   }}
                 >
@@ -128,13 +140,13 @@ const Navbar = () => {
                     {item.name}
                     <span className={cn(
                       "absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue to-code-pink transition-all duration-300 group-hover:w-full",
-                      activeLink === item.name.toLowerCase() && "w-full"
+                      activeLink === item.id && "w-full"
                     )}></span>
                   </span>
                   
                   {/* Background hover effect */}
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-code-blue/0 via-code-purple/5 to-code-pink/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                </a>
+                </Link>
               ))}
             </nav>
             
