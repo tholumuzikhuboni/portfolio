@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
@@ -60,7 +59,6 @@ const Projects = () => {
     }
   }, [isError, toast]);
 
-  // Featured repositories have more stars or specific topics
   const featuredRepos = repositories?.filter(repo => 
     repo.stargazers_count > 0 || 
     repo.topics?.some(topic => 
@@ -70,7 +68,6 @@ const Projects = () => {
 
   const filteredRepos = filter === "featured" ? featuredRepos : repositories || [];
   
-  // Calculate pagination
   const totalPages = Math.ceil(filteredRepos.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedRepos = filteredRepos.slice(startIndex, startIndex + itemsPerPage);
@@ -174,15 +171,13 @@ const Projects = () => {
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious 
-                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} 
-                    disabled={currentPage === 1}
+                    onClick={() => currentPage > 1 ? setCurrentPage(currentPage - 1) : undefined} 
                     className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
                   />
                 </PaginationItem>
                 
                 {[...Array(totalPages)].map((_, i) => {
                   const page = i + 1;
-                  // Show current page, first, last, and nearby pages
                   if (
                     page === 1 || 
                     page === totalPages || 
@@ -209,8 +204,7 @@ const Projects = () => {
                 
                 <PaginationItem>
                   <PaginationNext 
-                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
-                    disabled={currentPage === totalPages}
+                    onClick={() => currentPage < totalPages ? setCurrentPage(currentPage + 1) : undefined} 
                     className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
                   />
                 </PaginationItem>
@@ -226,7 +220,6 @@ const Projects = () => {
 const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguageColor: (lang: string) => string }) => {
   return (
     <Card className="h-full flex flex-col group transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg overflow-hidden border-t-2 border-t-transparent hover:border-t-code-purple relative">
-      {/* Subtle radial gradient in the background */}
       <div className="absolute inset-0 bg-gradient-radial from-code-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <CardHeader className="pb-3">
@@ -288,7 +281,6 @@ const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguage
   );
 };
 
-// Import this from the pagination component if needed
 const PaginationEllipsis = ({
   className,
   ...props
