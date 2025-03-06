@@ -1,12 +1,12 @@
+
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Star, GitFork, ExternalLink, Github, Code, BookOpen } from "lucide-react";
+import { Star, GitFork, ExternalLink, Github, Code, BookOpen, Layers, Terminal } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 interface Repository {
@@ -25,7 +25,6 @@ interface Repository {
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filter, setFilter] = useState<"all" | "featured">("featured");
   const { toast } = useToast();
   const itemsPerPage = 6;
   
@@ -59,18 +58,9 @@ const Projects = () => {
     }
   }, [isError, toast]);
 
-  const featuredRepos = repositories?.filter(repo => 
-    repo.stargazers_count > 0 || 
-    repo.topics?.some(topic => 
-      ["portfolio", "featured", "showcase", "project"].includes(topic)
-    )
-  ) || [];
-
-  const filteredRepos = filter === "featured" ? featuredRepos : repositories || [];
-  
-  const totalPages = Math.ceil(filteredRepos.length / itemsPerPage);
+  const totalPages = repositories ? Math.ceil(repositories.length / itemsPerPage) : 0;
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedRepos = filteredRepos.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedRepos = repositories ? repositories.slice(startIndex, startIndex + itemsPerPage) : [];
 
   const getLanguageColor = (language: string) => {
     const colors: Record<string, string> = {
@@ -88,85 +78,62 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 relative">
+      {/* Background elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/10 via-code-purple/10 to-code-pink/10 blur-3xl animate-pulse" />
+        <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/10 via-code-green/10 to-code-blue/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/50 animate-ping" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/50 animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
+        <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/50 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+        
+        <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
+        <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
+        <div className="absolute top-[45%] right-[20%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
+      </div>
+      
       <Navbar />
       
-      <main className="container mx-auto px-4 pt-32">
+      <main className="container mx-auto px-4 pt-32 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4 gradient-text">Projects</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Explore my coding journey through various projects and repositories.
-              Each project represents unique challenges and solutions I've worked on.
+            <h1 className="text-4xl font-bold mb-4 gradient-text font-mono">Projects</h1>
+            <p className="text-lg max-w-2xl mx-auto font-mono">
+              Explore my <span className="text-code-blue">coding journey</span> through various <span className="text-code-green">projects</span> and <span className="text-code-purple">repositories</span>. 
+              Each project represents <span className="text-code-yellow">unique challenges</span> and <span className="text-code-pink">solutions</span> I've worked on.
             </p>
           </div>
           
-          <Tabs defaultValue="featured" className="w-full mb-8" onValueChange={(value) => setFilter(value as "all" | "featured")}>
-            <div className="flex justify-center mb-6">
-              <TabsList>
-                <TabsTrigger value="featured">Featured Projects</TabsTrigger>
-                <TabsTrigger value="all">All Repositories</TabsTrigger>
-              </TabsList>
-            </div>
-            
-            <TabsContent value="featured" className="space-y-6">
-              {isLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[...Array(6)].map((_, i) => (
-                    <Card key={i} className="h-72 animate-pulse bg-muted/50">
-                      <div className="h-full flex items-center justify-center">
-                        <Code className="h-12 w-12 text-muted-foreground/20" />
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : featuredRepos.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {paginatedRepos.map((repo) => (
-                    <ProjectCard key={repo.id} repo={repo} getLanguageColor={getLanguageColor} />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <BookOpen className="mx-auto h-16 w-16 text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-medium mb-2">No featured projects yet</h3>
-                  <p className="text-muted-foreground max-w-md mx-auto">
-                    I'm currently working on exciting projects that will be featured here soon!
-                  </p>
-                </div>
-              )}
-            </TabsContent>
-            
-            <TabsContent value="all" className="space-y-6">
-              {isLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[...Array(6)].map((_, i) => (
-                    <Card key={i} className="h-72 animate-pulse bg-muted/50">
-                      <div className="h-full flex items-center justify-center">
-                        <Code className="h-12 w-12 text-muted-foreground/20" />
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : repositories && repositories.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {paginatedRepos.map((repo) => (
-                    <ProjectCard key={repo.id} repo={repo} getLanguageColor={getLanguageColor} />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <Github className="mx-auto h-16 w-16 text-muted-foreground/30 mb-4" />
-                  <h3 className="text-xl font-medium mb-2">No repositories found</h3>
-                  <p className="text-muted-foreground max-w-md mx-auto">
-                    No GitHub repositories could be found. Check the username or try again later.
-                  </p>
-                </div>
-              )}
-            </TabsContent>
-          </Tabs>
+          <div className="space-y-6">
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[...Array(6)].map((_, i) => (
+                  <Card key={i} className="h-72 animate-pulse bg-muted/50">
+                    <div className="h-full flex items-center justify-center">
+                      <Code className="h-12 w-12 text-muted-foreground/20" />
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            ) : repositories && repositories.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {paginatedRepos.map((repo) => (
+                  <ProjectCard key={repo.id} repo={repo} getLanguageColor={getLanguageColor} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <Github className="mx-auto h-16 w-16 text-muted-foreground/30 mb-4" />
+                <h3 className="text-xl font-medium mb-2">No repositories found</h3>
+                <p className="text-muted-foreground max-w-md mx-auto">
+                  No GitHub repositories could be found. Check the username or try again later.
+                </p>
+              </div>
+            )}
+          </div>
           
-          {filteredRepos.length > itemsPerPage && (
+          {repositories && repositories.length > itemsPerPage && (
             <Pagination className="mt-10">
               <PaginationContent>
                 <PaginationItem>
