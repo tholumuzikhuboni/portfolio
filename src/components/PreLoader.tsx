@@ -79,7 +79,7 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
           </div>
           
           <span className="flex justify-center items-center gap-1 sm:gap-2 font-mono font-medium text-lg sm:text-xl md:text-2xl gradient-text">
-            <Terminal className="h-4 w-4 sm:h-5 sm:w-5" />
+            <Terminal className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5" />
             Tholumuzi.dev
           </span>
         </motion.div>
