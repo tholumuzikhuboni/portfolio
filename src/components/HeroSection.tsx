@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
+import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail } from 'lucide-react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,8 +38,18 @@ const HeroSection = () => {
     <section className="min-h-screen pt-24 pb-16 flex flex-col justify-center relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/10 via-code-purple/10 to-code-pink/10 blur-3xl" />
-        <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/10 via-code-green/10 to-code-blue/10 blur-3xl" />
+        <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/20 via-code-purple/20 to-code-pink/20 blur-3xl animate-pulse" />
+        <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/20 via-code-green/20 to-code-blue/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        {/* Added more visual elements */}
+        <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green animate-ping" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
+        <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+        
+        {/* Code-like background elements */}
+        <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
+        <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
+        <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
       </div>
       
       <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -75,22 +86,46 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-wrap gap-4"
           >
-            <motion.button 
-              className="bg-gradient-to-r from-code-blue to-code-purple text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+            <motion.a 
+              href="#projects"
+              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-3 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2"
               whileHover={{ 
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
               }}
               whileTap={{ scale: 0.95 }}
             >
-              View My Work
-            </motion.button>
-            <motion.button 
-              className="bg-transparent border border-code-purple/20 text-foreground py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/50"
+              <Code className="h-5 w-5" />
+              <span>View My Work</span>
+              <ChevronRight className="h-4 w-4 transform transition-transform group-hover:translate-x-1" />
+            </motion.a>
+            <motion.a 
+              href="#contact"
+              className="group bg-transparent border border-code-purple/30 text-foreground py-3 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Contact Me
-            </motion.button>
+              <Mail className="h-5 w-5" />
+              <span>Contact Me</span>
+              <SendHorizonal className="h-4 w-4 transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </motion.a>
+          </motion.div>
+          
+          {/* Social links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex items-center gap-4 pt-4"
+          >
+            <a 
+              href="https://github.com/tholumuzi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-code-purple transition-colors p-2 rounded-full hover:bg-code-purple/10"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            {/* You can add more social links here */}
           </motion.div>
         </div>
         
@@ -98,9 +133,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="w-full max-w-xl mx-auto lg:mx-0"
+          className="w-full max-w-xl mx-auto lg:mx-0 relative"
         >
+          {/* Decorative elements around the code block */}
+          <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-code-blue/30 rounded-tl-lg"></div>
+          <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-code-purple/30 rounded-br-lg"></div>
+          
           {isVisible && <CodeBlock code={code} className="shadow-2xl" />}
+          
+          {/* Additional decorative dots */}
+          <div className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full bg-code-yellow/20"></div>
+          <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-code-green/20"></div>
         </motion.div>
       </div>
     </section>

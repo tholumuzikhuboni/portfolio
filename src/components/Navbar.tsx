@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Code } from 'lucide-react';
+import { Code, Github } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -40,9 +40,15 @@ const Navbar = () => {
           ))}
         </nav>
         
-        <button className="bg-primary text-primary-foreground py-2 px-4 rounded-md text-sm font-medium transition-all duration-300 hover:bg-primary/90 hover:scale-105 hover:shadow-lg active:scale-95">
-          Get in Touch
-        </button>
+        <a 
+          href="https://github.com/tholumuzi" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-primary text-primary-foreground py-2 px-4 rounded-md text-sm font-medium transition-all duration-300 hover:bg-primary/90 hover:scale-105 hover:shadow-lg active:scale-95 flex items-center gap-2"
+        >
+          <Github className="h-4 w-4" />
+          <span className="hidden md:inline">GitHub</span>
+        </a>
       </div>
     </header>
   );

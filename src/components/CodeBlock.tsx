@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TypewriterText from './TypewriterText';
 
 interface CodeBlockProps {
@@ -34,7 +34,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 
   return (
     <div 
-      className={`font-mono text-sm sm:text-base overflow-hidden rounded-lg bg-[#1a1a1a] p-4 sm:p-6 ${className}`}
+      className={`font-mono text-sm sm:text-base overflow-hidden rounded-lg bg-transparent backdrop-blur-sm border border-white/10 p-4 sm:p-6 ${className}`}
       style={{ boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)' }}
     >
       {isRevealed ? (
