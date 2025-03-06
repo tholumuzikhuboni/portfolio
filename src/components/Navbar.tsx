@@ -26,10 +26,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 group">
             <div className="relative">
-              <Code className="h-6 w-6 text-primary group-hover:text-code-purple transition-colors duration-300" />
+              <Code className="h-6 w-6 text-code-purple group-hover:text-code-blue transition-colors duration-300" />
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-code-green animate-pulse" />
             </div>
-            <span className="font-mono font-medium text-lg relative overflow-hidden group-hover:text-code-purple transition-colors duration-300">
+            <span className="font-mono font-medium text-lg relative overflow-hidden bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink">
               Tholumuzi.dev
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink group-hover:w-full transition-all duration-700"></span>
             </span>
@@ -51,9 +51,9 @@ const Navbar = () => {
             href="https://github.com/tholumuzi" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-primary rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:bg-primary/90 hover:scale-105 hover:shadow-lg active:scale-95"
+            className="bg-[#333] rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:bg-[#24292e] hover:scale-105 hover:shadow-lg active:scale-95"
           >
-            <Github className="h-5 w-5 text-primary-foreground" />
+            <Github className="h-5 w-5 text-white" />
           </a>
         </div>
 

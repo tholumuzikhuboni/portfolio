@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
 
@@ -78,7 +79,7 @@
   }
 
   .hero-button {
-    @apply px-3 py-1 text-xs md:text-sm md:px-4 md:py-2 rounded-md font-medium font-mono transition-all 
+    @apply px-2 py-1 text-xs md:text-sm md:px-4 md:py-2 rounded-md font-medium font-mono transition-all 
     duration-300 flex items-center gap-1.5 hover:scale-105 hover:shadow-lg active:scale-95;
   }
 

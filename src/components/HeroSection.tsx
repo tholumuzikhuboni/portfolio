@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
-import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail, Linkedin, Instagram, Facebook, Tv, Terminal, Sparkles, Search, Layers } from 'lucide-react';
+import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail, Linkedin, Instagram, Facebook, Sparkles, Search, Layers } from 'lucide-react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,24 +35,20 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen pt-24 pb-16 flex flex-col justify-center relative overflow-hidden">
-      {/* Enhanced background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/20 via-code-purple/20 to-code-pink/20 blur-3xl animate-pulse" />
         <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/20 via-code-green/20 to-code-blue/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         
-        {/* More visual elements */}
         <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green animate-ping" style={{ animationDuration: '3s' }} />
         <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
         <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
         <div className="absolute top-[35%] right-[40%] w-2 h-2 rounded-full bg-code-pink animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }} />
         <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple animate-ping" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
         
-        {/* Added floating coding symbols */}
         <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
         <div className="absolute top-[45%] right-[20%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
         
-        {/* Code-like background elements */}
         <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
         <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
         <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
@@ -98,7 +93,7 @@ const HeroSection = () => {
           >
             <motion.a 
               href="#projects"
-              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-2.5 px-5 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap"
+              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-2 px-4 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap text-sm"
               whileHover={{ 
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
               }}
@@ -109,7 +104,7 @@ const HeroSection = () => {
             </motion.a>
             <motion.a 
               href="#contact"
-              className="group bg-transparent border border-code-purple/30 text-foreground py-2.5 px-5 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2 whitespace-nowrap"
+              className="group bg-transparent border border-code-purple/30 text-foreground py-2 px-4 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2 whitespace-nowrap text-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -118,7 +113,6 @@ const HeroSection = () => {
             </motion.a>
           </motion.div>
           
-          {/* Social links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,7 +123,7 @@ const HeroSection = () => {
               href="https://github.com/tholumuzi" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-code-purple transition-colors p-2 rounded-full hover:bg-code-purple/10"
+              className="text-[#333] hover:text-[#2b3137] transition-colors p-2 rounded-full hover:bg-[#f6f8fa]"
             >
               <Github className="h-5 w-5" />
             </a>
@@ -137,7 +131,7 @@ const HeroSection = () => {
               href="https://linkedin.com/in/tholumuzi" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-[#0A66C2] transition-colors p-2 rounded-full hover:bg-[#0A66C2]/10"
+              className="text-[#0A66C2] hover:text-[#004182] transition-colors p-2 rounded-full hover:bg-[#E6F2FF]"
             >
               <Linkedin className="h-5 w-5" />
             </a>
@@ -145,7 +139,7 @@ const HeroSection = () => {
               href="https://instagram.com/tholumuzi" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-[#E4405F] transition-colors p-2 rounded-full hover:bg-[#E4405F]/10"
+              className="text-[#E4405F] hover:text-[#C13584] transition-colors p-2 rounded-full hover:bg-[#FFEEF5]"
             >
               <Instagram className="h-5 w-5" />
             </a>
@@ -153,32 +147,10 @@ const HeroSection = () => {
               href="https://facebook.com/tholumuzi" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-[#1877F2] transition-colors p-2 rounded-full hover:bg-[#1877F2]/10"
+              className="text-[#1877F2] hover:text-[#0E5FCF] transition-colors p-2 rounded-full hover:bg-[#E7F3FF]"
             >
               <Facebook className="h-5 w-5" />
             </a>
-            <a 
-              href="https://tiktok.com/@tholumuzi" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-foreground/70 hover:text-[#000000] transition-colors p-2 rounded-full hover:bg-[#000000]/10"
-            >
-              <Tv className="h-5 w-5" />
-            </a>
-          </motion.div>
-
-          {/* Added skills indicators */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex items-center gap-3 pt-2 flex-wrap"
-          >
-            <div className="px-3 py-1 rounded-full bg-code-blue/10 text-code-blue text-xs font-mono border border-code-blue/20">React</div>
-            <div className="px-3 py-1 rounded-full bg-code-green/10 text-code-green text-xs font-mono border border-code-green/20">TypeScript</div>
-            <div className="px-3 py-1 rounded-full bg-code-purple/10 text-code-purple text-xs font-mono border border-code-purple/20">UI/UX</div>
-            <div className="px-3 py-1 rounded-full bg-code-yellow/10 text-code-yellow text-xs font-mono border border-code-yellow/20">Node.js</div>
-            <div className="px-3 py-1 rounded-full bg-code-pink/10 text-code-pink text-xs font-mono border border-code-pink/20">Tailwind</div>
           </motion.div>
         </div>
         
@@ -188,11 +160,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="w-full max-w-xl mx-auto lg:mx-0 relative"
         >
-          {/* Enhanced decorative elements around the code block */}
           <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-code-blue/30 rounded-tl-lg"></div>
           <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-code-purple/30 rounded-br-lg"></div>
           
-          {/* Added floating decorator */}
           <div className="absolute -top-6 right-6 bg-code-green/10 p-1 rounded text-xs font-mono text-code-green border border-code-green/20 animate-float">
             <Layers className="h-3 w-3 inline mr-1" />
             code.tsx
@@ -200,7 +170,6 @@ const HeroSection = () => {
           
           {isVisible && <CodeBlock code={code} className="shadow-2xl" />}
           
-          {/* Additional decorative dots */}
           <div className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full bg-code-yellow/20"></div>
           <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-code-green/20"></div>
           <div className="absolute bottom-10 -right-4 w-3 h-3 rounded-full bg-code-blue/20"></div>
