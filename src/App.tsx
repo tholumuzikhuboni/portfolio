@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import HireMe from "./pages/HireMe";
-import MemoryGame from "./pages/MemoryGame";
 import NotFound from "./pages/NotFound";
 import PreLoader from "./components/PreLoader";
 
@@ -55,11 +54,6 @@ const App = () => (
           <Route path="/projects" element={
             <PageTransition>
               <Projects />
-            </PageTransition>
-          } />
-          <Route path="/memory-game" element={
-            <PageTransition>
-              <MemoryGame />
             </PageTransition>
           } />
           <Route path="/hire-me" element={
