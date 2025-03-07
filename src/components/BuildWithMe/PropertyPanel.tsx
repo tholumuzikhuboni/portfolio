@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { ComponentType } from '@/pages/BuildWithMe';
-import { Palette, Type, MoveHorizontal, RoundedCorner, Calendar } from 'lucide-react';
+import { Palette, Type, MoveHorizontal, Circle, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -275,7 +276,7 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <Label htmlFor="border-radius" className="text-xs flex items-center gap-1">
-                <RoundedCorner className="h-3.5 w-3.5" />
+                <Circle className="h-3.5 w-3.5" />
                 Border Radius
               </Label>
               <span className="text-xs font-mono text-gray-500">{properties.borderRadius}px</span>
