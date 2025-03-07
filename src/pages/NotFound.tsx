@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Code, Search, Home, Sparkles } from "lucide-react";
 import TypewriterText from "@/components/TypewriterText";
@@ -8,8 +7,10 @@ import Navbar from "@/components/Navbar";
 
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [showConsole, setShowConsole] = useState(false);
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
+  const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
     console.error(
@@ -42,11 +43,24 @@ const NotFound = () => {
       }
     }, 600);
 
+    // Add countdown and redirect to home
+    const redirectTimer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(redirectTimer);
+          navigate('/');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
     return () => {
       clearTimeout(timer);
       clearInterval(terminalTimer);
+      clearInterval(redirectTimer);
     };
-  }, [location.pathname]);
+  }, [location.pathname, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-background">
@@ -109,21 +123,21 @@ const NotFound = () => {
           </p>
         </motion.div>
 
-        {/* Animated console/terminal with improved glass morphism effect */}
+        {/* Animated console/terminal with white background matching home page */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showConsole ? 1 : 0, y: showConsole ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="backdrop-blur-xl bg-black/20 rounded-lg p-4 font-mono text-left text-sm max-w-2xl mx-auto border border-code-green/30 shadow-2xl"
+          className="backdrop-blur-xl bg-white/90 rounded-lg p-4 font-mono text-left text-sm max-w-2xl mx-auto border border-code-green/30 shadow-2xl"
         >
           <div className="flex items-center gap-2 mb-2 border-b border-code-green/20 pb-2">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-gray-300/90 text-xs ml-2">terminal @ tholumuzi.dev</span>
+            <span className="text-gray-600 text-xs ml-2">terminal @ tholumuzi.dev</span>
           </div>
           
-          <div className="text-gray-200 space-y-1 h-[200px] overflow-y-auto">
+          <div className="text-gray-800 space-y-1 h-[200px] overflow-y-auto">
             {terminalLines.map((line, index) => (
               <TypewriterText
                 key={index}
@@ -134,7 +148,7 @@ const NotFound = () => {
                     ? "text-code-pink" 
                     : line.includes("Suggestion") 
                       ? "text-code-green" 
-                      : "text-gray-300"
+                      : "text-gray-700"
                 }
               />
             ))}
@@ -146,6 +160,9 @@ const NotFound = () => {
                   delay={40}
                   colorClassName="text-code-blue"
                 />
+                <div className="mt-2 text-gray-800 animate-pulse">
+                  Redirecting to home in {countdown} seconds...
+                </div>
               </div>
             )}
           </div>
