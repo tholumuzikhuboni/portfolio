@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Code, X, Menu, Sparkles } from 'lucide-react';
+import { Code, X, Menu, Sparkles, GamepadIcon } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,6 +33,8 @@ const Navbar = () => {
       setActiveLink('hire-me');
     } else if (path === '/contact') {
       setActiveLink('contact');
+    } else if (path === '/memory-game') {
+      setActiveLink('memory-game');
     }
   }, [location]);
 
@@ -43,6 +45,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', path: '/', id: 'home' },
     { name: 'Projects', path: '/projects', id: 'projects' },
+    { name: 'Game', path: '/memory-game', id: 'memory-game' },
     { name: 'Hire Me', path: '/hire-me', id: 'hire-me' },
     { name: 'Contact', path: '/contact', id: 'contact' }
   ];
