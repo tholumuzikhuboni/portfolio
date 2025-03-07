@@ -187,8 +187,8 @@ const Contact = () => {
                 icon={<Mail className="h-8 w-8 text-white" />}
                 title="Email"
                 description="Send me an email directly"
-                content="contact@tholumuzi.dev"
-                link="mailto:contact@tholumuzi.dev"
+                content="contact@tholumuzi.co.za"
+                link="mailto:contact@tholumuzi.co.za"
                 color="bg-gradient-to-br from-code-blue to-code-purple"
               />
               
@@ -243,7 +243,7 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
+                        placeholder="Tholumuzi Doe"
                         required
                         className="focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-blue/20 hover:border-code-green/50"
                       />
@@ -259,7 +259,7 @@ const Contact = () => {
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@example.com"
+                        placeholder="muzi@example.com"
                         required
                         className="focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-purple/20 hover:border-code-blue/50"
                       />
