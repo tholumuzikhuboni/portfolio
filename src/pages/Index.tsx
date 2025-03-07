@@ -11,7 +11,7 @@ const Index = () => {
   useEffect(() => {
     const minLoadTime = setTimeout(() => {
       setLoading(false);
-    }, 6000); // Increased to 6 seconds
+    }, 5000);
     
     return () => clearTimeout(minLoadTime);
   }, []);
