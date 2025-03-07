@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,26 +32,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submission:", formData);
+    try {
+      const response = await fetch('https://formspree.io/f/xgveoyla', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
       
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Message not sent",
+        description: "There was an error sending your message. Please try again.",
+        variant: "destructive"
       });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-      
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
+  
   
   return (
     <div className="min-h-screen bg-background">
