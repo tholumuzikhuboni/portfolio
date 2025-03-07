@@ -1,3 +1,4 @@
+// copyright 2025 by THOLUMUZI KHUBONI 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
