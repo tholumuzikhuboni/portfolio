@@ -26,10 +26,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         },
       }}
       {...props}
-    >
-      {/* Custom icon rendering through children instead of through the invalid icons prop */}
-      {props.children}
-    </Sonner>
+    />
   )
 }
 
