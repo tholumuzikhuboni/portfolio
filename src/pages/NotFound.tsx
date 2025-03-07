@@ -11,7 +11,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   const [showConsole, setShowConsole] = useState(false);
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(30);
 
   useEffect(() => {
     console.error(
@@ -44,7 +44,7 @@ const NotFound = () => {
       }
     }, 600);
 
-    // Add countdown and redirect to home
+    // Add countdown and redirect to home after 30 seconds
     const redirectTimer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
