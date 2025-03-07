@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Code, Menu, Sparkles } from 'lucide-react';
+import { Code, X, Menu, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -109,7 +110,13 @@ const Navbar = () => {
             className="bg-gradient-to-r from-code-blue to-code-purple rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden group md:hidden"
             aria-label="Toggle navigation menu"
           >
-            <Menu className="h-5 w-5 text-white relative z-10" />
+            <div className="relative z-10 transition-all duration-300">
+              {menuOpen ? (
+                <X className="h-5 w-5 text-white" />
+              ) : (
+                <Menu className="h-5 w-5 text-white" />
+              )}
+            </div>
             <div className="absolute inset-0 bg-white/20 scale-0 rounded-full group-hover:scale-100 transition-transform duration-300"></div>
             <div className="absolute -inset-px rounded-full border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>

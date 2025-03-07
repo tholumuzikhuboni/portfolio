@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import PreLoader from '@/components/PreLoader';
+import { Toaster } from '@/components/ui/sonner';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ const Index = () => {
       {loading && <PreLoader onComplete={() => setLoading(false)} />}
       <Navbar />
       <HeroSection />
+      <Toaster />
     </div>
   );
 };

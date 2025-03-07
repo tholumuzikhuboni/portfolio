@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { AtSign, Mail, MapPin, Github, Linkedin, Instagram, Facebook, UserCheck, Code, TerminalSquare, Cpu, ServerCrash, Star, Sparkles, BrainCircuit } from "lucide-react";
+import { AtSign, Mail, MapPin, Github, Linkedin, Instagram, Facebook, UserCheck, Code, TerminalSquare, Cpu, ServerCrash, Star, Sparkles, BrainCircuit, CheckCircle2, XCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const Contact = () => {
@@ -43,8 +43,14 @@ const Contact = () => {
       
       if (response.ok) {
         toast({
-          title: "Message sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
+          title: "Message sent successfully!",
+          description: (
+            <div className="flex items-center gap-2">
+              <span className="text-code-green">Your message has been delivered.</span>
+              <CheckCircle2 className="h-4 w-4 text-code-green animate-pulse" />
+            </div>
+          ),
+          className: "bg-gradient-to-r from-code-blue/20 to-code-green/20 border border-code-green/30",
         });
         
         // Reset form
@@ -61,14 +67,19 @@ const Contact = () => {
       console.error('Form submission error:', error);
       toast({
         title: "Message not sent",
-        description: "There was an error sending your message. Please try again.",
-        variant: "destructive"
+        description: (
+          <div className="flex items-center gap-2">
+            <span className="text-code-red">Please try again or contact me directly.</span>
+            <XCircle className="h-4 w-4 text-code-red animate-pulse" />
+          </div>
+        ),
+        variant: "destructive",
+        className: "bg-gradient-to-r from-code-red/20 to-code-pink/20 border border-code-red/30",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-  
   
   return (
     <div className="min-h-screen bg-background">
