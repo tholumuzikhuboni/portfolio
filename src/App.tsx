@@ -31,7 +31,9 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {loading && <PreLoader onComplete={() => setLoading(false)} />}
-      {children}
+      <div style={{ display: loading ? 'none' : 'block' }}>
+        {children}
+      </div>
     </>
   );
 };

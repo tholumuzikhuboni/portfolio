@@ -92,7 +92,7 @@ const Projects = () => {
         <div className="absolute -bottom-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-tr from-code-yellow/15 via-code-green/20 to-code-blue/15 blur-3xl animate-pulse" style={{ animationDuration: '18s', animationDelay: '2s' }} />
         <div className="absolute top-[40%] right-[40%] w-[60%] h-[60%] rounded-full bg-gradient-to-tl from-code-red/5 via-code-purple/10 to-code-yellow/5 blur-3xl animate-pulse" style={{ animationDuration: '20s', animationDelay: '1s' }} />
         
-        {/* Additional floating particles - increased count */}
+        {/* Floating particles - 50 of them */}
         {Array.from({ length: 50 }).map((_, i) => (
           <div 
             key={`particle-${i}`}
@@ -107,7 +107,7 @@ const Projects = () => {
           />
         ))}
         
-        {/* Enhanced ping dots - added more */}
+        {/* Enhanced ping dots - 12 of them */}
         <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/60 animate-ping shadow-lg shadow-code-green/30" style={{ animationDuration: '3s' }} />
         <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/60 animate-ping shadow-lg shadow-code-yellow/30" style={{ animationDuration: '4s', animationDelay: '1s' }} />
         <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
@@ -121,7 +121,7 @@ const Projects = () => {
         <div className="absolute top-[10%] left-[45%] w-3 h-3 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '4.3s', animationDelay: '0.6s' }} />
         <div className="absolute bottom-[15%] left-[60%] w-2 h-2 rounded-full bg-code-purple/60 animate-ping shadow-lg shadow-code-purple/30" style={{ animationDuration: '3.4s', animationDelay: '1.1s' }} />
         
-        {/* Enhanced code symbols - added more */}
+        {/* Enhanced code symbols - 13 of them */}
         <div className="absolute top-[25%] left-[30%] text-code-green/30 font-mono text-2xl animate-float shadow-lg shadow-code-green/10" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/30 font-mono text-2xl animate-float shadow-lg shadow-code-blue/10" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
         <div className="absolute top-[45%] right-[20%] text-code-purple/30 font-mono text-2xl animate-float shadow-lg shadow-code-purple/10" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
@@ -134,6 +134,7 @@ const Projects = () => {
         <div className="absolute bottom-[45%] right-[25%] text-code-red/30 font-mono text-2xl animate-float shadow-lg shadow-code-red/10" style={{ animationDuration: '7.7s', animationDelay: '1.8s' }}>{'let'}</div>
         <div className="absolute top-[62%] left-[52%] text-code-green/30 font-mono text-2xl animate-float shadow-lg shadow-code-green/10" style={{ animationDuration: '5.9s', animationDelay: '1.1s' }}>{'if()'}</div>
         <div className="absolute bottom-[65%] left-[75%] text-code-blue/30 font-mono text-2xl animate-float shadow-lg shadow-code-blue/10" style={{ animationDuration: '6.7s', animationDelay: '0.9s' }}>{'==='}</div>
+        <div className="absolute top-[82%] right-[30%] text-code-purple/30 font-mono text-2xl animate-float shadow-lg shadow-code-purple/10" style={{ animationDuration: '7.1s', animationDelay: '1.6s' }}>{'async'}</div>
         
         <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/20 font-mono text-7xl animate-float" style={{ animationDuration: '25s' }}>&#123;</div>
         <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/20 font-mono text-7xl animate-float" style={{ animationDuration: '28s', animationDelay: '3s' }}>&#125;</div>
@@ -142,13 +143,14 @@ const Projects = () => {
         <div className="hidden lg:block absolute top-[40%] right-[30%] text-code-pink/20 font-mono text-5xl animate-float" style={{ animationDuration: '24s', animationDelay: '2.8s' }}>function()</div>
         <div className="hidden lg:block absolute bottom-[55%] left-[35%] text-code-green/20 font-mono text-5xl animate-float" style={{ animationDuration: '26s', animationDelay: '1.2s' }}>return</div>
         
+        {/* Matrix-like falling elements with programming terms - 45 of them */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
           {Array.from({ length: 45 }).map((_, i) => (
             <div 
               key={`matrix-${i}`}
               className="absolute font-mono animate-fall"
               style={{
-                top: `${Math.random() * 100}%`,
+                top: `-${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 color: [
                   'rgba(94, 234, 212, 0.6)',
@@ -160,7 +162,7 @@ const Projects = () => {
                 textShadow: '0 0 5px currentColor',
                 animationDuration: `${15 + Math.random() * 20}s`,
                 fontSize: `${Math.floor(Math.random() * 14) + 10}px`,
-                opacity: 0.2 + Math.random() * 0.3
+                opacity: 0.4 + Math.random() * 0.5
               }}
             >
               {['0', '1', '<>', '/>', '{}', '[]', '()', '=>', '!=', '+=', '||', '&&', 'JS', 'TS', 'let', 'var', 'const', 'map', 'filter', 'reduce', 'React', 'Node', 'API', 'async', 'await', 'import', 'export'][Math.floor(Math.random() * 27)]}
@@ -168,7 +170,7 @@ const Projects = () => {
           ))}
         </div>
         
-        {/* Enhanced Lucide icons in background - added more Star and Atom icons */}
+        {/* Enhanced Lucide icons in background */}
         <div className="absolute top-[40%] left-[10%] text-code-blue/20 animate-float" style={{ animationDuration: '18s' }}>
           <Database size={32} />
         </div>
@@ -352,7 +354,7 @@ const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguage
           <Button 
             size="sm" 
             variant="outline" 
-            className="flex-1 text-xs relative z-10"
+            className="flex-1 text-xs relative z-20"
             asChild
           >
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
@@ -365,7 +367,7 @@ const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguage
             <Button 
               size="sm" 
               variant="default" 
-              className="flex-1 text-xs bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue relative z-10"
+              className="flex-1 text-xs bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue relative z-20"
               asChild
             >
               <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
