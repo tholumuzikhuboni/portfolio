@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import HireMe from "./pages/HireMe";
-import SkillsDashboard from "./pages/SkillsDashboard";
 import NotFound from "./pages/NotFound";
 import PreLoader from "./components/PreLoader";
 
@@ -60,11 +59,6 @@ const App = () => (
           <Route path="/hire-me" element={
             <PageTransition>
               <HireMe />
-            </PageTransition>
-          } />
-          <Route path="/skills" element={
-            <PageTransition>
-              <SkillsDashboard />
             </PageTransition>
           } />
           <Route path="/contact" element={
