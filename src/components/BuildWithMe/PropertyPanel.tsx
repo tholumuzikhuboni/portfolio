@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { ComponentType } from '@/pages/BuildWithMe';
-import { Palette, Type, ArrowsOutCardinal, BorderRadius, Calendar } from 'lucide-react';
+import { Palette, Type, MoveHorizontal, RoundedCorner, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -34,7 +33,6 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
 
   const { id, type, properties } = selectedComponent;
   
-  // Handle property updates
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onUpdateProperty(id, 'text', e.target.value);
   };
@@ -97,7 +95,7 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
         {/* Position and size */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-            <ArrowsOutCardinal className="h-3.5 w-3.5" />
+            <MoveHorizontal className="h-3.5 w-3.5" />
             Position & Size
           </div>
           
@@ -277,7 +275,7 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <Label htmlFor="border-radius" className="text-xs flex items-center gap-1">
-                <BorderRadius className="h-3.5 w-3.5" />
+                <RoundedCorner className="h-3.5 w-3.5" />
                 Border Radius
               </Label>
               <span className="text-xs font-mono text-gray-500">{properties.borderRadius}px</span>
