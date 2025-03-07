@@ -1,3 +1,4 @@
+// copyright 2025 by THOLUMUZI KHUBONI
 
 import React, { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
