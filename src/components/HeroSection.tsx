@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ChevronRight, ExternalLink, Code, SendHorizonal, Github, Mail, Linkedin, Instagram, Facebook, Sparkles, Search, Layers, Terminal } from 'lucide-react';
 
 const HeroSection = () => {
@@ -92,26 +93,32 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex items-center gap-4 flex-nowrap overflow-x-auto sm:flex-wrap"
           >
-            <motion.a 
-              href="#projects"
-              className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-2 px-4 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap text-sm"
+            <motion.div 
               whileHover={{ 
                 boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <Search className="h-4 w-4" />
-              <span className="font-mono">View My Work</span>
-            </motion.a>
-            <motion.a 
-              href="#contact"
-              className="group bg-transparent border border-code-purple/30 text-foreground py-2 px-4 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2 whitespace-nowrap text-sm"
+              <Link 
+                to="/projects"
+                className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-2 px-4 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap text-sm"
+              >
+                <Search className="h-4 w-4" />
+                <span className="font-mono">View My Work</span>
+              </Link>
+            </motion.div>
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Mail className="h-4 w-4" />
-              <span className="font-mono">Contact Me</span>
-            </motion.a>
+              <Link 
+                to="/contact"
+                className="group bg-transparent border border-code-purple/30 text-foreground py-2 px-4 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2 whitespace-nowrap text-sm"
+              >
+                <Mail className="h-4 w-4" />
+                <span className="font-mono">Contact Me</span>
+              </Link>
+            </motion.div>
           </motion.div>
           
           <motion.div
@@ -164,7 +171,7 @@ const HeroSection = () => {
           <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-code-blue/30 rounded-tl-lg"></div>
           <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-code-purple/30 rounded-br-lg"></div>
           
-          <div className="absolute -top-6 right-6 bg-code-green/10 p-1 rounded text-xs font-mono text-code-green border border-code-green/20 animate-float">
+          <div className="absolute -top-6 right-6 bg-code-green/10 p-1 rounded text-xs font-mono text-code-green border border-code-green/20 animate-float" style={{ animation: 'float 3s ease-in-out infinite' }}>
             <Layers className="h-3 w-3 inline mr-1" />
             code.tsx
           </div>

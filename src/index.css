@@ -6,75 +6,67 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
-
-    /* Code colors */
-    --code-red: 0 90% 65%;
-    --code-green: 160 75% 65%;
-    --code-blue: 200 90% 75%;
-    --code-yellow: 45 95% 65%;
-    --code-purple: 270 95% 85%;
-    --code-pink: 350 95% 75%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
-
+ 
 @layer base {
   * {
     @apply border-border;
@@ -84,139 +76,99 @@
   }
 }
 
-@layer utilities {
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink;
-  }
-  
-  .text-code-red {
-    color: hsl(var(--code-red));
-  }
-  
-  .text-code-green {
-    color: hsl(var(--code-green));
-  }
-  
-  .text-code-blue {
-    color: hsl(var(--code-blue));
-  }
-  
-  .text-code-yellow {
-    color: hsl(var(--code-yellow));
-  }
-  
-  .text-code-purple {
-    color: hsl(var(--code-purple));
-  }
-  
-  .text-code-pink {
-    color: hsl(var(--code-pink));
-  }
-  
-  .bg-code-red {
-    background-color: hsl(var(--code-red));
-  }
-  
-  .bg-code-green {
-    background-color: hsl(var(--code-green));
-  }
-  
-  .bg-code-blue {
-    background-color: hsl(var(--code-blue));
-  }
-  
-  .bg-code-yellow {
-    background-color: hsl(var(--code-yellow));
-  }
-  
-  .bg-code-purple {
-    background-color: hsl(var(--code-purple));
-  }
-  
-  .bg-code-pink {
-    background-color: hsl(var(--code-pink));
-  }
-  
-  .shadow-nav {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-  }
-  
-  .bg-gradient-radial {
-    background-image: radial-gradient(var(--tw-gradient-stops));
-  }
+/* Code color scheme */
+:root {
+  --code-blue: #3b82f6;
+  --code-purple: #8b5cf6;
+  --code-pink: #ec4899;
+  --code-green: #10b981;
+  --code-yellow: #f59e0b;
 }
 
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink;
+}
+
+.text-code-blue {
+  color: var(--code-blue);
+}
+
+.text-code-purple {
+  color: var(--code-purple);
+}
+
+.text-code-pink {
+  color: var(--code-pink);
+}
+
+.text-code-green {
+  color: var(--code-green);
+}
+
+.text-code-yellow {
+  color: var(--code-yellow);
+}
+
+.bg-code-blue {
+  background-color: var(--code-blue);
+}
+
+.shadow-nav {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Add the animation for the floating elements */
 @keyframes float {
   0% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
   50% {
     transform: translateY(-10px);
   }
   100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse-mobile {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
+    transform: translateY(0px);
   }
 }
 
 .animate-float {
-  animation: float infinite ease-in-out;
+  animation: float 3s ease-in-out infinite;
 }
 
-.animate-fall {
-  animation: fall linear infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-.animate-pulse-mobile {
-  animation: pulse-mobile 3s infinite ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .font-mono {
-    letter-spacing: -0.5px;
+/* Particle effects */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
   }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Keyframe for element fading in */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
