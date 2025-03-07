@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Star, GitFork, ExternalLink, Github, Code, BookOpen, Layers, Terminal } from "lucide-react";
+import { Star, GitFork, ExternalLink, Github, Code, BookOpen, Layers, Terminal, Sparkles, Atom, Zap, Database, Rocket, CircleCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 interface Repository {
@@ -58,7 +58,6 @@ const Projects = () => {
     }
   }, [isError, toast]);
 
-  // Scroll to top when page changes
   useEffect(() => {
     if (projectsRef.current) {
       projectsRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -86,50 +85,80 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-background pb-20 relative">
-      {/* Enhanced Animated Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Large gradient blobs */}
-        <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/10 via-code-purple/10 to-code-pink/10 blur-3xl animate-pulse" />
-        <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/10 via-code-green/10 to-code-blue/10 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-code-blue/15 via-code-purple/20 to-code-pink/15 blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
+        <div className="absolute -bottom-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-tr from-code-yellow/15 via-code-green/20 to-code-blue/15 blur-3xl animate-pulse" style={{ animationDuration: '18s', animationDelay: '2s' }} />
+        <div className="absolute top-[40%] right-[40%] w-[60%] h-[60%] rounded-full bg-gradient-to-tl from-code-red/5 via-code-purple/10 to-code-yellow/5 blur-3xl animate-pulse" style={{ animationDuration: '20s', animationDelay: '1s' }} />
         
-        {/* Animated dots */}
-        <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/50 animate-ping" style={{ animationDuration: '3s' }} />
-        <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/50 animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
-        <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/50 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
-        <div className="absolute top-[35%] right-[40%] w-2 h-2 rounded-full bg-code-pink/50 animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }} />
-        <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple/50 animate-ping" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
-        <div className="absolute top-[15%] right-[35%] w-2 h-2 rounded-full bg-code-red/50 animate-ping" style={{ animationDuration: '2.8s', animationDelay: '0.3s' }} />
-        <div className="absolute bottom-[20%] right-[40%] w-3 h-3 rounded-full bg-code-blue/50 animate-ping" style={{ animationDuration: '3.2s', animationDelay: '1.2s' }} />
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div 
+            key={`particle-${i}`}
+            className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-br from-code-blue to-code-purple animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.2 + Math.random() * 0.3,
+              animationDuration: `${8 + Math.random() * 12}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
         
-        {/* Floating code symbols */}
-        <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
-        <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
-        <div className="absolute top-[45%] right-[20%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
-        <div className="absolute top-[30%] left-[60%] text-code-yellow/20 font-mono text-xl animate-float" style={{ animationDuration: '5s', animationDelay: '0.5s' }}>{'()'}</div>
-        <div className="absolute bottom-[25%] left-[20%] text-code-pink/20 font-mono text-xl animate-float" style={{ animationDuration: '7.5s', animationDelay: '1.5s' }}>{'[]'}</div>
+        <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/60 animate-ping shadow-lg shadow-code-green/30" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/60 animate-ping shadow-lg shadow-code-yellow/30" style={{ animationDuration: '4s', animationDelay: '1s' }} />
+        <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+        <div className="absolute top-[35%] right-[40%] w-2 h-2 rounded-full bg-code-pink/60 animate-ping shadow-lg shadow-code-pink/30" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }} />
+        <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple/60 animate-ping shadow-lg shadow-code-purple/30" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
+        <div className="absolute top-[15%] right-[35%] w-2 h-2 rounded-full bg-code-red/60 animate-ping shadow-lg shadow-code-red/30" style={{ animationDuration: '2.8s', animationDelay: '0.3s' }} />
+        <div className="absolute bottom-[20%] right-[40%] w-3 h-3 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '3.2s', animationDelay: '1.2s' }} />
         
-        {/* Large code symbols */}
-        <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
-        <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
-        <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
+        <div className="absolute top-[25%] left-[30%] text-code-green/30 font-mono text-2xl animate-float shadow-lg shadow-code-green/10" style={{ animationDuration: '6s' }}>{'<>'}</div>
+        <div className="absolute bottom-[35%] right-[30%] text-code-blue/30 font-mono text-2xl animate-float shadow-lg shadow-code-blue/10" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
+        <div className="absolute top-[45%] right-[20%] text-code-purple/30 font-mono text-2xl animate-float shadow-lg shadow-code-purple/10" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
+        <div className="absolute top-[30%] left-[60%] text-code-yellow/30 font-mono text-2xl animate-float shadow-lg shadow-code-yellow/10" style={{ animationDuration: '5s', animationDelay: '0.5s' }}>{'()'}</div>
+        <div className="absolute bottom-[25%] left-[20%] text-code-pink/30 font-mono text-2xl animate-float shadow-lg shadow-code-pink/10" style={{ animationDuration: '7.5s', animationDelay: '1.5s' }}>{'[]'}</div>
         
-        {/* Matrix-like falling elements */}
-        <div className="absolute inset-0 overflow-hidden opacity-10">
-          {Array.from({ length: 15 }).map((_, i) => (
+        <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/20 font-mono text-7xl animate-float" style={{ animationDuration: '25s' }}>&#123;</div>
+        <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/20 font-mono text-7xl animate-float" style={{ animationDuration: '28s', animationDelay: '3s' }}>&#125;</div>
+        <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/20 font-mono text-5xl animate-float" style={{ animationDuration: '20s', animationDelay: '2s' }}>&lt;/&gt;</div>
+        
+        <div className="absolute inset-0 overflow-hidden opacity-20">
+          {Array.from({ length: 25 }).map((_, i) => (
             <div 
-              key={i} 
-              className="absolute font-mono text-code-green"
+              key={`matrix-${i}`}
+              className="absolute font-mono animate-fall"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 10}s linear infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-                opacity: 0.3 + Math.random() * 0.7
+                color: [
+                  'rgba(94, 234, 212, 0.6)',
+                  'rgba(252, 211, 77, 0.6)',
+                  'rgba(125, 211, 252, 0.6)',
+                  'rgba(251, 113, 133, 0.6)',
+                  'rgba(216, 180, 254, 0.6)',
+                ][Math.floor(Math.random() * 5)],
+                textShadow: '0 0 5px currentColor',
+                animationDuration: `${15 + Math.random() * 20}s`,
+                fontSize: `${Math.floor(Math.random() * 14) + 10}px`,
+                opacity: 0.2 + Math.random() * 0.3
               }}
             >
-              {['0', '1', '<>', '/>', '{}', '[]'][Math.floor(Math.random() * 6)]}
+              {['0', '1', '<>', '/>', '{}', '[]', '()', '=>', '!=', '+=', '||', '&&'][Math.floor(Math.random() * 12)]}
             </div>
           ))}
+        </div>
+        
+        <div className="absolute top-[40%] left-[10%] text-code-blue/20 animate-float" style={{ animationDuration: '18s' }}>
+          <Database size={32} />
+        </div>
+        <div className="absolute bottom-[35%] right-[10%] text-code-green/20 animate-float" style={{ animationDuration: '22s', animationDelay: '2s' }}>
+          <Rocket size={32} />
+        </div>
+        <div className="absolute top-[60%] left-[25%] text-code-purple/20 animate-float" style={{ animationDuration: '20s', animationDelay: '1s' }}>
+          <Atom size={32} />
+        </div>
+        <div className="absolute top-[20%] right-[25%] text-code-yellow/20 animate-float" style={{ animationDuration: '19s', animationDelay: '3s' }}>
+          <Zap size={32} />
         </div>
       </div>
       
@@ -225,6 +254,8 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguageColor: (lang: string) => string }) => {
+  const languageBadgeClass = repo.language ? getLanguageColor(repo.language) : "bg-gray-500";
+  
   return (
     <Card className="h-full flex flex-col group transform hover:-translate-y-1 transition-all duration-300 hover:shadow-lg overflow-hidden border-t-2 border-t-transparent hover:border-t-code-purple relative">
       <div className="absolute inset-0 bg-gradient-radial from-code-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -247,7 +278,7 @@ const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguage
             </Badge>
           ))}
           {repo.language && (
-            <Badge className={`${getLanguageColor(repo.language)} text-white text-xs`}>
+            <Badge className={`${languageBadgeClass} text-white text-xs`}>
               {repo.language}
             </Badge>
           )}
@@ -267,19 +298,25 @@ const ProjectCard = ({ repo, getLanguageColor }: { repo: Repository, getLanguage
       
       <CardFooter className="pt-2">
         <div className="w-full flex gap-2">
-          <Button asChild size="sm" variant="outline" className="flex-1 text-xs">
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-1 h-3.5 w-3.5" />
-              View Code
-            </a>
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="flex-1 text-xs"
+            onClick={() => window.open(repo.html_url, '_blank', 'noopener,noreferrer')}
+          >
+            <Github className="mr-1 h-3.5 w-3.5" />
+            View Code
           </Button>
           
           {repo.homepage && (
-            <Button asChild size="sm" variant="default" className="flex-1 text-xs bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue">
-              <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-1 h-3.5 w-3.5" />
-                Live Demo
-              </a>
+            <Button 
+              size="sm" 
+              variant="default" 
+              className="flex-1 text-xs bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue"
+              onClick={() => window.open(repo.homepage, '_blank', 'noopener,noreferrer')}
+            >
+              <ExternalLink className="mr-1 h-3.5 w-3.5" />
+              Live Demo
             </Button>
           )}
         </div>

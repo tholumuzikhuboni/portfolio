@@ -1,133 +1,184 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Code colors */
+    --code-red: 0 90% 65%;
+    --code-green: 160 75% 65%;
+    --code-blue: 200 90% 75%;
+    --code-yellow: 45 95% 65%;
+    --code-purple: 270 95% 85%;
+    --code-pink: 350 95% 75%;
   }
 
-  * {
-    @apply border-border;
-  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-  ::selection {
-    @apply bg-primary/10 text-primary;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
-@layer components {
-  .typing-container {
-    @apply inline-block relative overflow-hidden;
+@layer base {
+  * {
+    @apply border-border;
   }
-
-  .typing-text {
-    @apply overflow-hidden whitespace-nowrap border-r-2 border-primary pr-1 animate-text-reveal;
+  body {
+    @apply bg-background text-foreground;
   }
+}
 
+@layer utilities {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink bg-[length:400%_400%] animate-gradient-shift;
-  }
-
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-card;
-  }
-
-  .hero-button {
-    @apply px-2 py-1 text-xs md:text-sm md:px-4 md:py-2 rounded-md font-medium font-mono transition-all 
-    duration-300 flex items-center gap-1.5 hover:scale-105 hover:shadow-lg active:scale-95;
-  }
-
-  .hero-button-primary {
-    @apply hero-button bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink;
   }
   
-  .hero-button-secondary {
-    @apply hero-button bg-secondary/80 text-secondary-foreground hover:bg-secondary;
-  }
-
-  .code-comment {
-    @apply text-code-gray;
+  .text-code-red {
+    color: hsl(var(--code-red));
   }
   
-  .code-keyword {
-    @apply text-code-purple;
+  .text-code-green {
+    color: hsl(var(--code-green));
   }
   
-  .code-property {
-    @apply text-code-blue;
+  .text-code-blue {
+    color: hsl(var(--code-blue));
   }
   
-  .code-string {
-    @apply text-code-green;
+  .text-code-yellow {
+    color: hsl(var(--code-yellow));
   }
   
-  .code-bracket {
-    @apply text-code-yellow;
+  .text-code-purple {
+    color: hsl(var(--code-purple));
   }
   
-  .code-function {
-    @apply text-code-blue;
+  .text-code-pink {
+    color: hsl(var(--code-pink));
+  }
+  
+  .bg-code-red {
+    background-color: hsl(var(--code-red));
+  }
+  
+  .bg-code-green {
+    background-color: hsl(var(--code-green));
+  }
+  
+  .bg-code-blue {
+    background-color: hsl(var(--code-blue));
+  }
+  
+  .bg-code-yellow {
+    background-color: hsl(var(--code-yellow));
+  }
+  
+  .bg-code-purple {
+    background-color: hsl(var(--code-purple));
+  }
+  
+  .bg-code-pink {
+    background-color: hsl(var(--code-pink));
+  }
+  
+  .shadow-nav {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
   }
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
   }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float infinite ease-in-out;
+}
+
+.animate-fall {
+  animation: fall linear infinite;
 }
