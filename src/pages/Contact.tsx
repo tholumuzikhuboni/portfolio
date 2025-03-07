@@ -157,30 +157,33 @@ const Contact = () => {
             {/* Contact Information Cards */}
             <div className="space-y-6">
               <ContactInfoCard 
-                icon={<Mail className="h-8 w-8 text-code-blue" />}
+                icon={<Mail className="h-8 w-8 text-white" />}
                 title="Email"
                 description="Send me an email directly"
                 content="contact@tholumuzi.dev"
                 link="mailto:contact@tholumuzi.dev"
+                color="bg-gradient-to-br from-code-blue to-code-purple"
               />
               
               <ContactInfoCard 
-                icon={<AtSign className="h-8 w-8 text-code-purple" />}
+                icon={<AtSign className="h-8 w-8 text-white" />}
                 title="Social Media"
                 description="Connect with me online"
                 socialLinks={[
-                  { name: "Github", icon: <Github />, url: "https://github.com/tholumuzikhuboni" },
-                  { name: "LinkedIn", icon: <Linkedin />, url: "https://linkedin.com/in/tholumuzikhuboni" },
-                  { name: "Instagram", icon: <Instagram />, url: "https://instagram.com/tholumuzikhuboni" },
-                  { name: "Facebook", icon: <Facebook />, url: "https://facebook.com/tholumuzikhuboni" },
+                  { name: "Github", icon: <Github />, url: "https://github.com/tholumuzikhuboni", color: "#333" },
+                  { name: "LinkedIn", icon: <Linkedin />, url: "https://linkedin.com/in/tholumuzikhuboni", color: "#0077B5" },
+                  { name: "Instagram", icon: <Instagram />, url: "https://instagram.com/tholumuzikhuboni", color: "#E1306C" },
+                  { name: "Facebook", icon: <Facebook />, url: "https://facebook.com/tholumuzikhuboni", color: "#1877F2" },
                 ]}
+                color="bg-gradient-to-br from-code-purple to-code-pink"
               />
               
               <ContactInfoCard 
-                icon={<MapPin className="h-8 w-8 text-code-pink" />}
+                icon={<MapPin className="h-8 w-8 text-white" />}
                 title="Location"
                 description="Based in"
                 content="Johannesburg, South Africa"
+                color="bg-gradient-to-br from-code-pink to-code-yellow"
               />
             </div>
             
@@ -299,10 +302,12 @@ interface ContactInfoCardProps {
   description: string;
   content?: string;
   link?: string;
+  color?: string;
   socialLinks?: {
     name: string;
     icon: React.ReactNode;
     url: string;
+    color?: string;
   }[];
 }
 
@@ -312,18 +317,32 @@ const ContactInfoCard = ({
   description,
   content,
   link,
+  color = "bg-gradient-to-br from-code-blue to-code-green",
   socialLinks,
 }: ContactInfoCardProps) => {
   return (
-    <Card className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-l-4 border-l-transparent hover:border-l-code-purple">
-      <CardContent className="p-6">
-        <div className="flex gap-4">
-          <div className="bg-muted/30 rounded-full p-3 group-hover:bg-muted/50 transition-all duration-300">
+    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border-none">
+      <div className={`absolute inset-0 opacity-90 ${color}`}></div>
+      <div className="absolute inset-0 bg-white/90 dark:bg-black/80"></div>
+      
+      {/* Card decorative elements */}
+      <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-white/10 to-transparent rounded-full transform translate-x-16 -translate-y-16"></div>
+      <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-radial from-white/10 to-transparent rounded-full transform -translate-x-16 translate-y-16"></div>
+      
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-gradient-radial from-white/5 to-transparent rounded-full"></div>
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 rounded-full bg-code-green animate-ping opacity-75" style={{ animationDuration: '3s' }}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-2 h-2 rounded-full bg-code-purple animate-ping opacity-75" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
+      </div>
+      
+      <CardContent className="p-6 relative z-10">
+        <div className="flex flex-col items-center text-center sm:items-start sm:text-left sm:flex-row sm:gap-6">
+          <div className={`${color} text-white rounded-full p-5 shadow-lg mb-4 sm:mb-0 transform transition-transform group-hover:scale-110 duration-500`}>
             {icon}
           </div>
           
-          <div className="space-y-2">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="space-y-3 font-mono">
+            <h3 className="text-xl font-bold tracking-tight gradient-text">{title}</h3>
             <p className="text-sm text-muted-foreground">{description}</p>
             
             {content && (
@@ -331,7 +350,7 @@ const ContactInfoCard = ({
                 {link ? (
                   <a
                     href={link}
-                    className="text-sm font-medium text-code-blue hover:text-code-purple transition-colors"
+                    className="text-sm font-medium text-code-blue hover:text-code-purple transition-colors hover:underline"
                   >
                     {content}
                   </a>
@@ -342,17 +361,27 @@ const ContactInfoCard = ({
             )}
             
             {socialLinks && (
-              <div className="flex gap-3 pt-2">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-3 pt-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-code-purple transition-colors p-2 rounded-full hover:bg-muted/50"
+                    className="group/icon relative hover:scale-110 transition-all duration-300"
                     aria-label={social.name}
+                    title={social.name}
                   >
-                    {social.icon}
+                    <div 
+                      className="absolute inset-0 rounded-full opacity-10 group-hover/icon:opacity-20 transition-opacity" 
+                      style={{ backgroundColor: social.color || 'currentColor' }}
+                    ></div>
+                    <div 
+                      className="flex items-center justify-center p-3 rounded-full shadow-md transition-all duration-300 text-white" 
+                      style={{ backgroundColor: social.color || 'currentColor' }}
+                    >
+                      {social.icon}
+                    </div>
                   </a>
                 ))}
               </div>
@@ -365,4 +394,3 @@ const ContactInfoCard = ({
 };
 
 export default Contact;
-
