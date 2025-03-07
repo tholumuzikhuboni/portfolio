@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Code, Search, Home, Sparkles, ArrowLeft } from "lucide-react";
+import { Code, Search, Home, Sparkles } from "lucide-react";
 import TypewriterText from "@/components/TypewriterText";
-import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar";
 
 const NotFound = () => {
   const location = useLocation();
@@ -49,7 +49,9 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-background px-4">
+    <div className="min-h-screen flex flex-col relative overflow-hidden bg-background">
+      <Navbar />
+      
       {/* Background elements similar to the home page */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/20 via-code-purple/20 to-code-pink/20 blur-3xl animate-pulse" />
@@ -69,7 +71,7 @@ const NotFound = () => {
         <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
       </div>
 
-      <div className="max-w-3xl w-full mx-auto text-center space-y-8 relative">
+      <div className="max-w-3xl w-full mx-auto text-center space-y-8 relative pt-32 px-4">
         {/* The 404 error code with animated appearance */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -107,12 +109,12 @@ const NotFound = () => {
           </p>
         </motion.div>
 
-        {/* Animated console/terminal */}
+        {/* Animated console/terminal with glass morphism effect */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showConsole ? 1 : 0, y: showConsole ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-black/90 rounded-lg p-4 font-mono text-left text-sm max-w-2xl mx-auto border border-code-green/30 shadow-2xl"
+          className="backdrop-blur-lg bg-black/40 rounded-lg p-4 font-mono text-left text-sm max-w-2xl mx-auto border border-code-green/30 shadow-2xl"
         >
           <div className="flex items-center gap-2 mb-2 border-b border-code-green/20 pb-2">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -147,35 +149,6 @@ const NotFound = () => {
               </div>
             )}
           </div>
-        </motion.div>
-
-        {/* Action buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
-        >
-          <Button 
-            asChild
-            className="bg-gradient-to-r from-code-blue to-code-purple text-white py-2 px-6 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            <Link to="/">
-              <Home className="h-4 w-4" />
-              <span className="font-mono">Back to Home</span>
-            </Link>
-          </Button>
-          
-          <Button 
-            asChild
-            variant="outline"
-            className="border border-code-purple/30 text-foreground py-2 px-6 rounded-md font-medium transition-all duration-300 hover:bg-code-purple/5 hover:border-code-purple/70 flex items-center gap-2"
-          >
-            <Link to="/projects">
-              <Search className="h-4 w-4" />
-              <span className="font-mono">Explore Projects</span>
-            </Link>
-          </Button>
         </motion.div>
 
         {/* Code elements for decoration */}
