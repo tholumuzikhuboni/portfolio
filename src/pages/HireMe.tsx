@@ -1,188 +1,192 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, ArrowRight, Calendar, MessagesSquare, Code, FileText, Link2, Settings, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { 
-  Code, 
-  Laptop, 
-  Server, 
-  TrendingUp, 
-  Cloud, 
-  PenTool, 
-  ChevronRight, 
-  CheckCircle
-} from "lucide-react";
-import { motion } from "framer-motion";
+import EasterEgg from '@/components/EasterEgg';
 
 const HireMe = () => {
   const services = [
     {
       title: "Web Development",
-      icon: <Code className="h-10 w-10 text-code-blue" />,
-      description: "Modern, responsive websites built with the latest technologies for optimal performance and user experience.",
-      skills: ["React", "TypeScript", "Tailwind CSS", "Responsive Design"]
+      description: "Custom websites and web applications tailored to your specific needs and goals.",
+      icon: <Code className="h-6 w-6" />,
+      features: [
+        "Responsive Design",
+        "Frontend & Backend Development",
+        "E-commerce Solutions",
+        "Content Management Systems",
+        "API Development & Integration"
+      ]
     },
     {
-      title: "Software Development",
-      icon: <Laptop className="h-10 w-10 text-code-purple" />,
-      description: "Custom software solutions tailored to your specific business needs and requirements.",
-      skills: ["Full-Stack Development", "API Integration", "Database Design", "Testing & Deployment"]
+      title: "Web Design",
+      description: "User-focused designs that blend aesthetics with functionality for optimal user experience.",
+      icon: <FileText className="h-6 w-6" />,
+      features: [
+        "UI/UX Design",
+        "Wireframing & Prototyping",
+        "Mobile-First Design",
+        "Design Systems",
+        "Interactive Experiences"
+      ]
     },
     {
-      title: "IT Consulting",
-      icon: <Server className="h-10 w-10 text-code-green" />,
-      description: "Expert guidance on technology decisions to optimize your business operations and strategy.",
-      skills: ["Technology Assessment", "Strategic Planning", "Process Optimization", "Security Consulting"]
-    },
-    {
-      title: "Digital Transformation",
-      icon: <TrendingUp className="h-10 w-10 text-code-pink" />,
-      description: "Transform your business with innovative digital solutions that drive growth and efficiency.",
-      skills: ["Process Automation", "Legacy System Modernization", "Digital Strategy", "Change Management"]
-    },
-    {
-      title: "Google Cloud",
-      icon: <Cloud className="h-10 w-10 text-code-blue" />,
-      description: "Leverage the power of Google Cloud to build scalable, secure, and reliable applications.",
-      skills: ["Cloud Architecture", "GCP Services", "Cloud Migration", "Serverless Computing"]
-    },
-    {
-      title: "Brand Design",
-      icon: <PenTool className="h-10 w-10 text-code-yellow" />,
-      description: "Crafting visual identities that communicate your brand's unique story and values.",
-      skills: ["Logo Design", "Brand Guidelines", "User Interface Design", "Visual Identity"]
+      title: "Technical Consulting",
+      description: "Strategic guidance on technology choices, architecture, and implementation.",
+      icon: <Settings className="h-6 w-6" />,
+      features: [
+        "Technology Stack Selection",
+        "Performance Optimization",
+        "Security Audits",
+        "Code Reviews",
+        "Technical Documentation"
+      ]
     }
   ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100
-      }
-    }
-  };
-
+  
   return (
-    <>
+    <div className="min-h-screen">
       <Navbar />
-      <div className="min-h-screen pt-24 pb-16 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 md:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-3xl md:text-5xl font-mono font-bold mb-6 gradient-text">
-                Ready to build something amazing?
-              </h1>
-              <div className="h-1 w-40 bg-gradient-to-r from-code-blue via-code-purple to-code-pink rounded-full mb-6"></div>
-              <p className="text-foreground/80 text-lg md:text-xl font-mono mb-8 max-w-3xl">
-                I offer specialized solutions tailored to your unique needs. Let's collaborate to bring your vision to life with cutting-edge technology and innovative approaches.
+      
+      <main className="max-w-7xl mx-auto px-4 pt-32 pb-20 relative">
+        <div className="text-center mb-12 max-w-2xl mx-auto relative">
+          <h1 className="text-4xl font-bold mb-4 relative inline-block">
+            Hire <span className="text-code-purple">Me</span>
+            <span className="absolute -bottom-1 left-0 w-full h-3 bg-code-green/20 -z-10 rotate-1"></span>
+            <EasterEgg type="ghost" position="top-right" className="absolute -top-4 -right-4" />
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            I help businesses and individuals bring their digital ideas to life with clean, efficient, and beautiful code.
+          </p>
+        </div>
+        
+        {/* Services Section */}
+        <section className="mb-20 relative group">
+          <EasterEgg type="fact" visibleOnHover={true} position="top-left" />
+          
+          <h2 className="text-2xl font-bold mb-8 text-center">Services I Offer</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <Card key={index} className="border border-gray-200 hover:border-code-purple/30 hover:shadow-md transition-all duration-300 group">
+                <CardHeader className="pb-2">
+                  <div className="w-12 h-12 bg-gradient-to-br from-code-blue/10 to-code-purple/10 rounded-full flex items-center justify-center mb-4">
+                    <div className="text-code-purple group-hover:text-code-blue transition-colors duration-300">
+                      {service.icon}
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="mb-4">{service.description}</CardDescription>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-code-green mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                
+                {index === 0 && <EasterEgg type="joke" position="bottom-right" className="absolute bottom-4 right-4" />}
+                {index === 1 && <EasterEgg type="music" position="bottom-right" className="absolute bottom-4 right-4" />}
+                {index === 2 && <EasterEgg type="bug" position="bottom-right" className="absolute bottom-4 right-4" />}
+              </Card>
+            ))}
+          </div>
+          
+          <EasterEgg type="message" visibleOnHover={true} position="bottom-right" />
+        </section>
+        
+        {/* Process Section */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold mb-8 text-center relative inline-block">
+            My Process
+            <span className="absolute -bottom-1 left-0 w-full h-2 bg-code-blue/20 -z-10 -rotate-1"></span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="relative">
+              <div className="w-14 h-14 bg-gradient-to-br from-code-blue/10 to-code-purple/10 rounded-full flex items-center justify-center mb-4">
+                <MessagesSquare className="h-6 w-6 text-code-purple" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">1. Consultation</h3>
+              <p className="text-muted-foreground text-sm">
+                We'll discuss your goals, requirements, timeline, and budget to ensure we're aligned on expectations.
               </p>
-            </motion.div>
+              <EasterEgg type="coffee" position="bottom-right" className="absolute bottom-0 right-0" />
+              
+              <div className="hidden md:block absolute top-1/2 right-[-30px] w-[60px] h-[2px] bg-gradient-to-r from-code-purple to-transparent transform -translate-y-1/2 z-10"></div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
+            <div className="relative">
+              <div className="w-14 h-14 bg-gradient-to-br from-code-blue/10 to-code-purple/10 rounded-full flex items-center justify-center mb-4">
+                <Link2 className="h-6 w-6 text-code-purple" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">2. Planning & Design</h3>
+              <p className="text-muted-foreground text-sm">
+                I'll create wireframes, mockups, and project plans to map out the development process and design.
+              </p>
+              <EasterEgg type="cat" position="bottom-right" className="absolute bottom-0 right-0" />
+              
+              <div className="hidden md:block absolute top-1/2 right-[-30px] w-[60px] h-[2px] bg-gradient-to-r from-code-purple to-transparent transform -translate-y-1/2 z-10"></div>
+            </div>
+            
+            <div className="relative">
+              <div className="w-14 h-14 bg-gradient-to-br from-code-blue/10 to-code-purple/10 rounded-full flex items-center justify-center mb-4">
+                <Zap className="h-6 w-6 text-code-purple" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">3. Development & Launch</h3>
+              <p className="text-muted-foreground text-sm">
+                I'll build your project with regular updates and revisions, then help you launch it successfully.
+              </p>
+              <EasterEgg type="dna" position="bottom-right" className="absolute bottom-0 right-0" />
+            </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="text-center relative group">
+          <EasterEgg type="magic" visibleOnHover={true} position="top-left" />
+          
+          <div className="bg-gradient-to-br from-code-blue/10 to-code-purple/10 p-8 md:p-12 rounded-xl border border-white/10 relative overflow-hidden">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to start your project?</h2>
+            <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
+              Let's discuss how I can help bring your vision to life. Reach out to schedule a consultation.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact">
-                <Button className="font-mono text-base group relative overflow-hidden bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-pink transition-all duration-300">
-                  <span className="relative z-10 flex items-center gap-2">
-                    Get in touch
-                    <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                <Button size="lg" className="gap-2 bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue text-white">
+                  <Calendar className="h-5 w-5" />
+                  <span>Schedule a Call</span>
                 </Button>
               </Link>
-            </motion.div>
-          </div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {services.map((service, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full border border-gray-200 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 group overflow-hidden">
-                  <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start">
-                      <div className="p-3 rounded-xl bg-gray-50 border border-gray-100 transition-colors group-hover:bg-gradient-to-br group-hover:from-gray-50 group-hover:to-white group-hover:shadow-md">
-                        {service.icon}
-                      </div>
-                      <div className="h-px w-10 bg-gradient-to-r from-transparent via-code-purple/20 to-transparent mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    </div>
-                    <CardTitle className="text-xl font-mono mt-4 text-foreground group-hover:gradient-text transition-colors duration-500">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-muted-foreground mb-4 font-mono text-sm">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.skills.map((skill, idx) => (
-                        <li key={idx} className="flex items-center gap-2 font-mono text-xs text-foreground/70">
-                          <CheckCircle className="h-3.5 w-3.5 text-code-green flex-shrink-0" />
-                          <span>{skill}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div 
-            className="mt-16 p-6 md:p-8 rounded-xl bg-gradient-to-r from-code-blue/5 to-code-purple/5 border border-gray-200 shadow-sm"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-mono font-bold mb-4 gradient-text">My Development Process</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              {[
-                { number: "01", title: "Discovery", description: "Understanding your goals, needs, and vision" },
-                { number: "02", title: "Planning", description: "Mapping out the strategy and technical approach" },
-                { number: "03", title: "Development", description: "Building your solution with precision and care" },
-                { number: "04", title: "Delivery", description: "Testing, refinement, and successful deployment" }
-              ].map((step, index) => (
-                <div key={index} className="relative p-4 border border-gray-200 bg-white/70 rounded-lg group hover:shadow-md transition-all duration-300">
-                  <div className="absolute -top-3 -right-3 font-mono text-3xl font-bold text-code-purple/10 group-hover:text-code-purple/20 transition-colors duration-300">
-                    {step.number}
-                  </div>
-                  <h3 className="font-mono font-bold text-foreground group-hover:text-code-purple transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm font-mono text-foreground/70">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
+              <Button variant="outline" size="lg" className="gap-2 bg-white hover:bg-gray-50">
+                <ArrowRight className="h-5 w-5" />
+                <span>View My Portfolio</span>
+              </Button>
             </div>
-          </motion.div>
-        </div>
-      </div>
-    </>
+            
+            {/* Visual elements */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-code-purple/10 to-transparent rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-code-blue/10 to-transparent rounded-full translate-y-1/2 -translate-x-1/2"></div>
+            
+            <EasterEgg type="joke" position="bottom-right" className="absolute bottom-4 right-4" />
+          </div>
+          
+          <EasterEgg type="ghost" visibleOnHover={true} position="bottom-right" />
+        </section>
+        
+        {/* Background decorations */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-code-blue/5 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-20 right-10 w-60 h-60 bg-code-purple/5 rounded-full blur-3xl -z-10"></div>
+      </main>
+    </div>
   );
 };
 
