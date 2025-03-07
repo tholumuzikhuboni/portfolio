@@ -76,7 +76,6 @@ const Navbar = () => {
                 onClick={() => setActiveLink(item.id)}
               >
                 <div className="relative z-10 overflow-hidden flex items-center gap-1.5">
-                  {item.icon && item.icon}
                   <span className="relative z-10">
                     {item.name}
                   </span>
