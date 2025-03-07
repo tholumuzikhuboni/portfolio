@@ -18,6 +18,7 @@ import {
   Users
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import { useIsMobile } from '../hooks/use-mobile';
 
 // Timeline item component
 const TimelineItem = ({ 
@@ -48,7 +49,7 @@ const TimelineItem = ({
         <span className="text-sm font-mono text-code-purple">{year}</span>
         <h3 className="text-lg font-semibold font-mono gradient-text">{title}</h3>
       </div>
-      <p className="text-sm text-foreground/70 leading-relaxed">{description}</p>
+      <p className="text-sm font-mono text-foreground/70 leading-relaxed">{description}</p>
       
       {/* Decorative element */}
       <div className="absolute -right-2 top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -81,6 +82,7 @@ const ActivityCard = ({
 const About = () => {
   // Refs for animated elements
   const codeBlockRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
   // Setup floating code particles
   useEffect(() => {
@@ -123,9 +125,9 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="md:text-left text-center max-w-3xl mx-auto md:mx-0"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text font-mono">
               About Me
             </h1>
             <div className="relative inline-block mb-8">
@@ -137,7 +139,7 @@ const About = () => {
               {/* Decorative orbit */}
               <div className="absolute inset-0 rounded-full border border-dashed border-code-blue/30 animate-spin-slow"></div>
             </div>
-            <p className="text-lg text-foreground/80 leading-relaxed">
+            <p className="text-lg text-foreground/80 leading-relaxed font-mono md:text-left text-center">
               Passionate software developer with a love for building innovative applications
               and constantly exploring new technologies. My journey began with simple drag-and-drop
               platforms and evolved into full-stack development and cloud technologies.
@@ -152,7 +154,7 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-2xl font-bold mb-8 inline-flex items-center">
+            <h2 className="text-2xl font-bold mb-8 inline-flex items-center font-mono">
               <span className="mr-3 gradient-text">My Journey</span>
               <div className="h-px flex-1 w-20 bg-gradient-to-r from-code-blue to-transparent"></div>
             </h2>
@@ -208,7 +210,7 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h2 className="text-2xl font-bold mb-8 inline-flex items-center">
+            <h2 className="text-2xl font-bold mb-8 inline-flex items-center font-mono">
               <span className="mr-3 gradient-text">A Day in My Life</span>
               <div className="h-px flex-1 w-20 bg-gradient-to-r from-code-blue to-transparent"></div>
             </h2>
@@ -224,24 +226,19 @@ const About = () => {
           </motion.div>
         </section>
         
-        {/* Connect section */}
+        {/* Connect section with github and linkedin only */}
         <section className="mb-20">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="text-2xl font-bold mb-8 inline-flex items-center">
-              <span className="mr-3 gradient-text">Let's Connect</span>
-              <div className="h-px flex-1 w-20 bg-gradient-to-r from-code-blue to-transparent"></div>
-            </h2>
-            
-            <div className="flex flex-wrap gap-6 justify-center">
+            <div className="flex flex-wrap gap-6 md:justify-start justify-center">
               <a 
                 href="https://github.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-code-blue/20 hover:bg-code-blue/10 hover:border-code-blue/40 transition-all group"
+                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-code-blue/20 hover:bg-code-blue/10 hover:border-code-blue/40 transition-all group font-mono"
               >
                 <Github className="w-5 h-5 text-code-blue group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-sm">GitHub</span>
@@ -251,18 +248,10 @@ const About = () => {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-code-purple/20 hover:bg-code-purple/10 hover:border-code-purple/40 transition-all group"
+                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-code-purple/20 hover:bg-code-purple/10 hover:border-code-purple/40 transition-all group font-mono"
               >
                 <Linkedin className="w-5 h-5 text-code-purple group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-sm">LinkedIn</span>
-              </a>
-              
-              <a 
-                href="/contact" 
-                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-code-pink/20 hover:bg-code-pink/10 hover:border-code-pink/40 transition-all group"
-              >
-                <Sparkles className="w-5 h-5 text-code-pink group-hover:scale-110 transition-transform" />
-                <span className="font-mono text-sm">Get in Touch</span>
               </a>
             </div>
           </motion.div>
@@ -274,16 +263,16 @@ const About = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="bg-white/5 rounded-lg p-8 border border-white/10 backdrop-blur-sm relative overflow-hidden"
+            className="bg-white/5 rounded-lg p-6 md:p-8 border border-white/10 backdrop-blur-sm relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-code-purple/10 rounded-full filter blur-3xl -z-10"></div>
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-code-blue/10 rounded-full filter blur-3xl -z-10"></div>
             
-            <h2 className="text-2xl font-bold mb-6 gradient-text">My Philosophy</h2>
+            <h2 className="text-2xl font-bold mb-6 gradient-text font-mono">My Philosophy</h2>
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">
                 <h3 className="text-lg font-medium mb-3 font-mono text-code-blue">Forever Learning</h3>
-                <p className="text-foreground/70">
+                <p className="text-foreground/70 font-mono">
                   The tech world evolves constantly, and I believe in staying curious 
                   and continuously expanding my knowledge. Every day presents new 
                   opportunities to learn something valuable.
@@ -292,7 +281,7 @@ const About = () => {
               
               <div className="flex-1">
                 <h3 className="text-lg font-medium mb-3 font-mono text-code-purple">Building Without Limits</h3>
-                <p className="text-foreground/70">
+                <p className="text-foreground/70 font-mono">
                   I'm passionate about creating solutions without restrictions. My journey 
                   from drag-and-drop platforms to full-stack development has shown me the 
                   power of having the skills to build exactly what I envision.
@@ -309,7 +298,7 @@ const About = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <h2 className="text-2xl font-bold mb-8 inline-flex items-center">
+            <h2 className="text-2xl font-bold mb-8 inline-flex items-center font-mono">
               <span className="mr-3 gradient-text">Skills & Expertise</span>
               <div className="h-px flex-1 w-20 bg-gradient-to-r from-code-blue to-transparent"></div>
             </h2>
@@ -349,31 +338,10 @@ const About = () => {
             </div>
           </motion.div>
         </section>
-        
-        {/* CTA section */}
-        <section className="mb-20">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <h2 className="text-2xl font-bold mb-4 gradient-text">Want to Work Together?</h2>
-            <p className="text-foreground/70 mb-8">
-              Whether you have a project in mind or just want to connect, I'm always open to 
-              new opportunities and collaborations.
-            </p>
-            <a 
-              href="/contact" 
-              className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-code-blue via-code-purple to-code-pink text-white font-medium hover:opacity-90 hover:scale-105 transition-all"
-            >
-              Get in Touch
-            </a>
-          </motion.div>
-        </section>
       </main>
     </div>
   );
 };
 
 export default About;
+
