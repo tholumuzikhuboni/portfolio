@@ -1,4 +1,4 @@
-
+// copyright 2025 by THOLUMUZI KHUBONI
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
