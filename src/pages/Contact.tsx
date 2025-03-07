@@ -1,10 +1,11 @@
+
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { AtSign, Mail, MapPin, Github, Linkedin, Instagram, Facebook, UserCheck } from "lucide-react";
+import { AtSign, Mail, MapPin, Github, Linkedin, Instagram, Facebook, UserCheck, Code, TerminalSquare, Cpu, ServerCrash, Star, Sparkles, BrainCircuit } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const Contact = () => {
@@ -72,6 +73,13 @@ const Contact = () => {
         <div className="absolute top-[15%] right-[35%] w-2 h-2 rounded-full bg-code-red animate-ping" style={{ animationDuration: '2.8s', animationDelay: '0.3s' }} />
         <div className="absolute bottom-[20%] right-[40%] w-3 h-3 rounded-full bg-code-blue animate-ping" style={{ animationDuration: '3.2s', animationDelay: '1.2s' }} />
         
+        {/* Additional animated dots */}
+        <div className="absolute top-[10%] left-[40%] w-3 h-3 rounded-full bg-code-purple animate-ping" style={{ animationDuration: '4.3s', animationDelay: '0.8s' }} />
+        <div className="absolute top-[70%] left-[20%] w-2 h-2 rounded-full bg-code-yellow animate-ping" style={{ animationDuration: '3.7s', animationDelay: '1.3s' }} />
+        <div className="absolute top-[40%] left-[65%] w-2 h-2 rounded-full bg-code-green animate-ping" style={{ animationDuration: '3.1s', animationDelay: '1.7s' }} />
+        <div className="absolute top-[25%] right-[10%] w-3 h-3 rounded-full bg-code-blue animate-ping" style={{ animationDuration: '4.6s', animationDelay: '0.2s' }} />
+        <div className="absolute bottom-[10%] right-[35%] w-2 h-2 rounded-full bg-code-red animate-ping" style={{ animationDuration: '3.9s', animationDelay: '1.5s' }} />
+        
         {/* Floating code symbols */}
         <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
@@ -79,39 +87,70 @@ const Contact = () => {
         <div className="absolute top-[30%] left-[60%] text-code-yellow/20 font-mono text-xl animate-float" style={{ animationDuration: '5s', animationDelay: '0.5s' }}>{'()'}</div>
         <div className="absolute bottom-[25%] left-[20%] text-code-pink/20 font-mono text-xl animate-float" style={{ animationDuration: '7.5s', animationDelay: '1.5s' }}>{'[]'}</div>
         
+        {/* Additional floating code symbols */}
+        <div className="absolute top-[18%] left-[45%] text-code-red/20 font-mono text-xl animate-float" style={{ animationDuration: '5.5s', animationDelay: '0.7s' }}>{'if()'}</div>
+        <div className="absolute bottom-[45%] right-[15%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6.5s', animationDelay: '1.2s' }}>{'==='}</div>
+        <div className="absolute top-[55%] left-[10%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7.2s', animationDelay: '1.8s' }}>{'/**/'}</div>
+        <div className="absolute top-[40%] right-[40%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8.5s', animationDelay: '0.3s' }}>{'while'}</div>
+        <div className="absolute bottom-[60%] left-[50%] text-code-yellow/20 font-mono text-xl animate-float" style={{ animationDuration: '6.8s', animationDelay: '2.2s' }}>{'return'}</div>
+        
         {/* Large code symbols */}
         <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
         <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
         <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
         
+        {/* Additional large code symbols */}
+        <div className="hidden lg:block absolute top-[60%] left-[15%] text-code-yellow/10 font-mono text-5xl">&#36;&#40;&#41;</div>
+        <div className="hidden lg:block absolute top-[40%] right-[5%] text-code-pink/10 font-mono text-5xl">&#91;&#93;</div>
+        <div className="hidden lg:block absolute bottom-[30%] left-[20%] text-code-red/10 font-mono text-4xl">function()</div>
+        
+        {/* Decorative Lucide icons */}
+        <div className="absolute top-[12%] left-[25%] text-code-blue/15 animate-float" style={{ animationDuration: '9s' }}>
+          <Code size={40} />
+        </div>
+        <div className="absolute bottom-[22%] right-[10%] text-code-purple/15 animate-float" style={{ animationDuration: '8s', animationDelay: '1s' }}>
+          <TerminalSquare size={36} />
+        </div>
+        <div className="absolute top-[50%] right-[25%] text-code-green/15 animate-float" style={{ animationDuration: '7s', animationDelay: '2s' }}>
+          <Cpu size={32} />
+        </div>
+        <div className="absolute bottom-[40%] left-[10%] text-code-yellow/15 animate-float" style={{ animationDuration: '10s', animationDelay: '0.5s' }}>
+          <ServerCrash size={38} />
+        </div>
+        <div className="absolute top-[35%] left-[35%] text-code-pink/15 animate-float" style={{ animationDuration: '6.5s', animationDelay: '1.5s' }}>
+          <Star size={30} />
+        </div>
+        <div className="absolute bottom-[15%] right-[40%] text-code-blue/15 animate-float" style={{ animationDuration: '7.5s', animationDelay: '0.8s' }}>
+          <Sparkles size={34} />
+        </div>
+        <div className="absolute top-[20%] right-[30%] text-code-purple/15 animate-float" style={{ animationDuration: '9.5s', animationDelay: '1.3s' }}>
+          <BrainCircuit size={42} />
+        </div>
+        
         {/* Matrix-like falling elements */}
         <div className="absolute inset-0 overflow-hidden opacity-10">
-          {Array.from({ length: 15 }).map((_, i) => (
+          {Array.from({ length: 30 }).map((_, i) => (
             <div 
               key={i} 
               className="absolute font-mono text-code-green"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 10}s linear infinite`,
+                animation: `fall ${5 + Math.random() * 15}s linear infinite`,
                 animationDelay: `${Math.random() * 5}s`,
                 opacity: 0.3 + Math.random() * 0.7
               }}
             >
-              {['0', '1', '<>', '/>', '{}', '[]'][Math.floor(Math.random() * 6)]}
+              {['0', '1', '<>', '/>', '{}', '[]', 'JS', 'TS', 'let', 'var', 'const', 'async', 'await', 'import', 'export', 'function', 'class', 'interface', 'for', 'while'][Math.floor(Math.random() * 20)]}
             </div>
           ))}
         </div>
       </div>
       
-      <main className="container mx-auto px-4 pt-32 pb-20">
+      <main className="container mx-auto px-4 pt-32 pb-20 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 gradient-text font-mono">Get in Touch</h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
-              Have a question or want to work together? Feel free to <span className="text-code-green">reach out</span> through
-              the contact form or <span className="text-code-blue">connect</span> with me directly on <span className="text-code-purple">social media</span>.
-            </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -132,6 +171,8 @@ const Contact = () => {
                 socialLinks={[
                   { name: "Github", icon: <Github />, url: "https://github.com/tholumuzikhuboni" },
                   { name: "LinkedIn", icon: <Linkedin />, url: "https://linkedin.com/in/tholumuzikhuboni" },
+                  { name: "Instagram", icon: <Instagram />, url: "https://instagram.com/tholumuzikhuboni" },
+                  { name: "Facebook", icon: <Facebook />, url: "https://facebook.com/tholumuzikhuboni" },
                 ]}
               />
               
@@ -144,12 +185,14 @@ const Contact = () => {
             </div>
             
             {/* Contact Form */}
-            <Card className="lg:col-span-2 relative overflow-hidden bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-white/20">
+            <Card className="lg:col-span-2 relative overflow-hidden bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-white/20 hover:shadow-xl transition-all duration-300">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-code-blue/10 to-transparent rounded-full transform translate-x-16 -translate-y-16" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-radial from-code-purple/10 to-transparent rounded-full transform -translate-x-16 translate-y-16" />
+              <div className="absolute top-[30%] left-[20%] w-32 h-32 bg-gradient-radial from-code-green/10 to-transparent rounded-full" />
+              <div className="absolute bottom-[40%] right-[20%] w-24 h-24 bg-gradient-radial from-code-yellow/10 to-transparent rounded-full" />
               
-              <CardHeader>
+              <CardHeader className="relative z-10">
                 <CardTitle className="text-2xl font-bold font-mono">
                   <span className="text-code-blue">Send</span> me a <span className="text-code-purple">Message</span>
                 </CardTitle>
@@ -158,11 +201,11 @@ const Contact = () => {
                 </CardDescription>
               </CardHeader>
               
-              <CardContent>
+              <CardContent className="relative z-10">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium font-mono">
+                    <div className="space-y-2 group">
+                      <label htmlFor="name" className="text-sm font-medium font-mono group-hover:text-code-green transition-colors duration-300">
                         Your <span className="text-code-green">Name</span>
                       </label>
                       <Input
@@ -172,12 +215,12 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="John Doe"
                         required
-                        className="focus:border-code-purple font-mono"
+                        className="focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-blue/20 hover:border-code-green/50"
                       />
                     </div>
                     
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium font-mono">
+                    <div className="space-y-2 group">
+                      <label htmlFor="email" className="text-sm font-medium font-mono group-hover:text-code-blue transition-colors duration-300">
                         Your <span className="text-code-blue">Email</span>
                       </label>
                       <Input
@@ -188,13 +231,13 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="john@example.com"
                         required
-                        className="focus:border-code-purple font-mono"
+                        className="focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-purple/20 hover:border-code-blue/50"
                       />
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium font-mono">
+                  <div className="space-y-2 group">
+                    <label htmlFor="subject" className="text-sm font-medium font-mono group-hover:text-code-yellow transition-colors duration-300">
                         <span className="text-code-yellow">Subject</span>
                     </label>
                     <Input
@@ -204,12 +247,12 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="How can I help you?"
                       required
-                      className="focus:border-code-purple font-mono"
+                      className="focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-yellow/20 hover:border-code-yellow/50"
                     />
                   </div>
                   
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium font-mono">
+                  <div className="space-y-2 group">
+                    <label htmlFor="message" className="text-sm font-medium font-mono group-hover:text-code-purple transition-colors duration-300">
                       <span className="text-code-purple">Message</span>
                     </label>
                     <Textarea
@@ -220,14 +263,14 @@ const Contact = () => {
                       placeholder="Your message here..."
                       rows={6}
                       required
-                      className="resize-none focus:border-code-purple font-mono"
+                      className="resize-none focus:border-code-purple font-mono transition-all duration-300 focus:ring-2 focus:ring-code-purple/20 hover:border-code-purple/50"
                     />
                   </div>
                   
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue text-white font-medium py-2 transition-all duration-300 font-mono"
+                    className="w-full bg-gradient-to-r from-code-blue to-code-purple hover:from-code-purple hover:to-code-blue text-white font-medium py-2 transition-all duration-300 font-mono shadow-xl hover:shadow-2xl hover:translate-y-[-2px]"
                   >
                     {isSubmitting ? (
                       <>
@@ -322,3 +365,4 @@ const ContactInfoCard = ({
 };
 
 export default Contact;
+
