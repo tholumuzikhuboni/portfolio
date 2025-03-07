@@ -1,69 +1,77 @@
-# Welcome to your Lovable project
 
-## Project info
+# Tholumuzi.dev - Personal Portfolio Website
 
-**URL**: https://lovable.dev/projects/a26721b8-42a8-4eb9-b415-4af0285bb2be
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-## How can I edit this code?
+## Overview
 
-There are several ways of editing your application.
+This repository contains the source code for [Tholumuzi.dev](https://tholumuzi.dev), a personal portfolio website showcasing my projects, skills, and professional journey as a developer.
 
-**Use Lovable**
+## Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a26721b8-42a8-4eb9-b415-4af0285bb2be) and start prompting.
+- **Responsive Design**: Optimized for all device sizes
+- **Interactive UI**: Modern and engaging user interface with animations
+- **Project Showcase**: Detailed portfolio of past and current projects
+- **Contact Form**: Easy way for potential clients and employers to reach out
+- **Hire Me**: Information about my services and availability
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technologies Used
 
-**Use your preferred IDE**
+- React
+- TypeScript
+- Tailwind CSS
+- ShadCN UI Components
+- React Router
+- Framer Motion
+- React Query
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Project Structure
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `/src/components`: Reusable UI components
+- `/src/pages`: Main application pages
+- `/src/hooks`: Custom React hooks
+- `/src/lib`: Utility functions and helpers
+- `/src/assets`: Static assets like images and icons
 
-Follow these steps:
+## Local Development
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+To run this project locally:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Clone the repository
+git clone <repository-url>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Navigate to the project directory
+cd <project-directory>
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The development server will start at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Building for Production
 
-**Use GitHub Codespaces**
+```bash
+# Create a production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview the production build locally
+npm run preview
+```
 
-## What technologies are used for this project?
+## License
 
-This project is built with .
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Copyright © 2025 Tholumuzi Khuboni. All Rights Reserved.
 
-## How can I deploy this project?
+This portfolio's design, content, and code may not be copied, modified, distributed, or used without explicit permission.
 
-Simply open [Lovable](https://lovable.dev/projects/a26721b8-42a8-4eb9-b415-4af0285bb2be) and click on Share -> Publish.
+## Contact
 
-## I want to use a custom domain - is that possible?
+For inquiries, please reach out through the contact form on the website or via email at [your-email@example.com].
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
