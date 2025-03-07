@@ -10,7 +10,6 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import HireMe from "./pages/HireMe";
 import NotFound from "./pages/NotFound";
-import BuildWithMe from "./pages/BuildWithMe"; // Import the new page
 import PreLoader from "./components/PreLoader";
 
 const queryClient = new QueryClient();
@@ -55,11 +54,6 @@ const App = () => (
           <Route path="/projects" element={
             <PageTransition>
               <Projects />
-            </PageTransition>
-          } />
-          <Route path="/build-with-me" element={
-            <PageTransition>
-              <BuildWithMe />
             </PageTransition>
           } />
           <Route path="/hire-me" element={
