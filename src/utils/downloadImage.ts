@@ -1,4 +1,4 @@
-m
+
 /**
  * Utility function to download a canvas as an image
  * @param canvas The canvas element to download
