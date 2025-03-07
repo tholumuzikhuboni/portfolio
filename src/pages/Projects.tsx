@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
@@ -86,11 +87,13 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-background pb-20 relative">
       <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Enhanced background elements */}
         <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-code-blue/15 via-code-purple/20 to-code-pink/15 blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
         <div className="absolute -bottom-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-tr from-code-yellow/15 via-code-green/20 to-code-blue/15 blur-3xl animate-pulse" style={{ animationDuration: '18s', animationDelay: '2s' }} />
         <div className="absolute top-[40%] right-[40%] w-[60%] h-[60%] rounded-full bg-gradient-to-tl from-code-red/5 via-code-purple/10 to-code-yellow/5 blur-3xl animate-pulse" style={{ animationDuration: '20s', animationDelay: '1s' }} />
         
-        {Array.from({ length: 20 }).map((_, i) => (
+        {/* Additional floating particles */}
+        {Array.from({ length: 30 }).map((_, i) => (
           <div 
             key={`particle-${i}`}
             className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-br from-code-blue to-code-purple animate-float"
@@ -104,6 +107,7 @@ const Projects = () => {
           />
         ))}
         
+        {/* Enhanced ping dots */}
         <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green/60 animate-ping shadow-lg shadow-code-green/30" style={{ animationDuration: '3s' }} />
         <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow/60 animate-ping shadow-lg shadow-code-yellow/30" style={{ animationDuration: '4s', animationDelay: '1s' }} />
         <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
@@ -111,19 +115,26 @@ const Projects = () => {
         <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple/60 animate-ping shadow-lg shadow-code-purple/30" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
         <div className="absolute top-[15%] right-[35%] w-2 h-2 rounded-full bg-code-red/60 animate-ping shadow-lg shadow-code-red/30" style={{ animationDuration: '2.8s', animationDelay: '0.3s' }} />
         <div className="absolute bottom-[20%] right-[40%] w-3 h-3 rounded-full bg-code-blue/60 animate-ping shadow-lg shadow-code-blue/30" style={{ animationDuration: '3.2s', animationDelay: '1.2s' }} />
+        <div className="absolute top-[75%] left-[20%] w-2 h-2 rounded-full bg-code-pink/60 animate-ping shadow-lg shadow-code-pink/30" style={{ animationDuration: '3.8s', animationDelay: '0.9s' }} />
+        <div className="absolute top-[45%] left-[25%] w-3 h-3 rounded-full bg-code-yellow/60 animate-ping shadow-lg shadow-code-yellow/30" style={{ animationDuration: '4.2s', animationDelay: '1.5s' }} />
         
+        {/* Enhanced code symbols */}
         <div className="absolute top-[25%] left-[30%] text-code-green/30 font-mono text-2xl animate-float shadow-lg shadow-code-green/10" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/30 font-mono text-2xl animate-float shadow-lg shadow-code-blue/10" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
         <div className="absolute top-[45%] right-[20%] text-code-purple/30 font-mono text-2xl animate-float shadow-lg shadow-code-purple/10" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
         <div className="absolute top-[30%] left-[60%] text-code-yellow/30 font-mono text-2xl animate-float shadow-lg shadow-code-yellow/10" style={{ animationDuration: '5s', animationDelay: '0.5s' }}>{'()'}</div>
         <div className="absolute bottom-[25%] left-[20%] text-code-pink/30 font-mono text-2xl animate-float shadow-lg shadow-code-pink/10" style={{ animationDuration: '7.5s', animationDelay: '1.5s' }}>{'[]'}</div>
+        <div className="absolute top-[55%] left-[70%] text-code-green/30 font-mono text-2xl animate-float shadow-lg shadow-code-green/10" style={{ animationDuration: '6.5s', animationDelay: '1.2s' }}>{'='}</div>
+        <div className="absolute bottom-[55%] right-[50%] text-code-blue/30 font-mono text-2xl animate-float shadow-lg shadow-code-blue/10" style={{ animationDuration: '7.2s', animationDelay: '0.8s' }}>{'&&'}</div>
+        <div className="absolute top-[70%] right-[65%] text-code-purple/30 font-mono text-2xl animate-float shadow-lg shadow-code-purple/10" style={{ animationDuration: '8.3s', animationDelay: '1.3s' }}>{'||'}</div>
         
         <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/20 font-mono text-7xl animate-float" style={{ animationDuration: '25s' }}>&#123;</div>
         <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/20 font-mono text-7xl animate-float" style={{ animationDuration: '28s', animationDelay: '3s' }}>&#125;</div>
         <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/20 font-mono text-5xl animate-float" style={{ animationDuration: '20s', animationDelay: '2s' }}>&lt;/&gt;</div>
+        <div className="hidden lg:block absolute bottom-[35%] left-[15%] text-code-yellow/20 font-mono text-5xl animate-float" style={{ animationDuration: '22s', animationDelay: '1.5s' }}>;;</div>
         
         <div className="absolute inset-0 overflow-hidden opacity-20">
-          {Array.from({ length: 25 }).map((_, i) => (
+          {Array.from({ length: 35 }).map((_, i) => (
             <div 
               key={`matrix-${i}`}
               className="absolute font-mono animate-fall"
@@ -143,11 +154,12 @@ const Projects = () => {
                 opacity: 0.2 + Math.random() * 0.3
               }}
             >
-              {['0', '1', '<>', '/>', '{}', '[]', '()', '=>', '!=', '+=', '||', '&&'][Math.floor(Math.random() * 12)]}
+              {['0', '1', '<>', '/>', '{}', '[]', '()', '=>', '!=', '+=', '||', '&&', 'JS', 'TS', 'let', 'var', 'const'][Math.floor(Math.random() * 17)]}
             </div>
           ))}
         </div>
         
+        {/* Enhanced Lucide icons in background */}
         <div className="absolute top-[40%] left-[10%] text-code-blue/20 animate-float" style={{ animationDuration: '18s' }}>
           <Database size={32} />
         </div>
@@ -155,10 +167,28 @@ const Projects = () => {
           <Rocket size={32} />
         </div>
         <div className="absolute top-[60%] left-[25%] text-code-purple/20 animate-float" style={{ animationDuration: '20s', animationDelay: '1s' }}>
-          <Atom size={32} />
+          <Atom size={40} />
         </div>
         <div className="absolute top-[20%] right-[25%] text-code-yellow/20 animate-float" style={{ animationDuration: '19s', animationDelay: '3s' }}>
           <Zap size={32} />
+        </div>
+        <div className="absolute bottom-[45%] left-[35%] text-code-pink/20 animate-float" style={{ animationDuration: '21s', animationDelay: '1.5s' }}>
+          <Terminal size={38} />
+        </div>
+        <div className="absolute top-[50%] right-[35%] text-code-blue/20 animate-float" style={{ animationDuration: '23s', animationDelay: '2.5s' }}>
+          <BookOpen size={32} />
+        </div>
+        <div className="absolute bottom-[25%] right-[30%] text-code-green/20 animate-float" style={{ animationDuration: '19s', animationDelay: '0.8s' }}>
+          <Layers size={35} />
+        </div>
+        <div className="absolute top-[30%] left-[45%] text-code-yellow/20 animate-float" style={{ animationDuration: '24s', animationDelay: '1.7s' }}>
+          <Star size={42} />
+        </div>
+        <div className="absolute bottom-[60%] right-[15%] text-code-purple/20 animate-float" style={{ animationDuration: '22s', animationDelay: '3.2s' }}>
+          <Sparkles size={36} />
+        </div>
+        <div className="absolute top-[80%] right-[40%] text-code-red/20 animate-float" style={{ animationDuration: '20s', animationDelay: '2.1s' }}>
+          <CircleCheck size={34} />
         </div>
       </div>
       
@@ -168,7 +198,7 @@ const Projects = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 gradient-text font-mono">Projects</h1>
-            <p className="text-lg max-w-2xl mx-auto font-mono">
+            <p className="text-lg max-w-2xl mx-auto font-mono text-base sm:text-lg">
               Explore my <span className="text-code-blue">coding journey</span> through various <span className="text-code-green">projects</span> and <span className="text-code-purple">repositories</span>. 
               Each project represents <span className="text-code-yellow">unique challenges</span> and <span className="text-code-pink">solutions</span> I've worked on.
             </p>
