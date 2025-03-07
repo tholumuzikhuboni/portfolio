@@ -17,14 +17,14 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
   if (!selectedComponent) {
     return (
       <Card className={className}>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <Palette className="h-4 w-4 text-code-purple" />
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs md:text-sm font-medium flex items-center gap-2">
+            <Palette className="h-3.5 w-3.5 text-code-purple" />
             Properties
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-center h-40 text-sm text-gray-500 font-mono">
+          <div className="flex items-center justify-center h-24 md:h-40 text-xs md:text-sm text-gray-500 font-mono">
             No component selected
           </div>
         </CardContent>
@@ -34,6 +34,7 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
 
   const { id, type, properties } = selectedComponent;
   
+  // Handle property changes
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onUpdateProperty(id, 'text', e.target.value);
   };
@@ -86,59 +87,59 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
 
   return (
     <Card className={`${className} overflow-y-auto`}>
-      <CardHeader className="pb-3">
-        <CardTitle className="text-sm font-medium flex items-center gap-2">
-          <Palette className="h-4 w-4 text-code-purple" />
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xs md:text-sm font-medium flex items-center gap-2">
+          <Palette className="h-3.5 w-3.5 text-code-purple" />
           {type.charAt(0).toUpperCase() + type.slice(1)} Properties
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Position and size */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-            <MoveHorizontal className="h-3.5 w-3.5" />
+      <CardContent className="space-y-3">
+        {/* Position and size - More compact for mobile */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-1 text-xs font-medium font-mono text-gray-500">
+            <MoveHorizontal className="h-3 w-3" />
             Position & Size
           </div>
           
-          <div className="grid grid-cols-2 gap-2">
-            <div className="space-y-1">
-              <Label htmlFor="x-position" className="text-xs">X Position</Label>
+          <div className="grid grid-cols-2 gap-1.5">
+            <div className="space-y-0.5">
+              <Label htmlFor="x-position" className="text-[10px] md:text-xs">X Position</Label>
               <Input 
                 id="x-position"
                 type="number"
                 value={properties.x}
                 onChange={(e) => handlePositionChange('x', e.target.value)}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="y-position" className="text-xs">Y Position</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="y-position" className="text-[10px] md:text-xs">Y Position</Label>
               <Input 
                 id="y-position"
                 type="number"
                 value={properties.y}
                 onChange={(e) => handlePositionChange('y', e.target.value)}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="width" className="text-xs">Width</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="width" className="text-[10px] md:text-xs">Width</Label>
               <Input 
                 id="width"
                 type="number"
                 value={properties.width}
                 onChange={(e) => handleSizeChange('width', e.target.value)}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="height" className="text-xs">Height</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="height" className="text-[10px] md:text-xs">Height</Label>
               <Input 
                 id="height"
                 type="number"
                 value={properties.height}
                 onChange={(e) => handleSizeChange('height', e.target.value)}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
           </div>
@@ -146,19 +147,19 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
         
         {/* Content properties */}
         {(type === 'button' || type === 'text') && (
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-              <Type className="h-3.5 w-3.5" />
+          <div className="space-y-2">
+            <div className="flex items-center gap-1 text-xs font-medium font-mono text-gray-500">
+              <Type className="h-3 w-3" />
               Content
             </div>
             
-            <div className="space-y-1">
-              <Label htmlFor="text-content" className="text-xs">Text</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="text-content" className="text-[10px] md:text-xs">Text</Label>
               <Input 
                 id="text-content" 
                 value={properties.text || ''} 
                 onChange={handleTextChange}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
           </div>
@@ -166,19 +167,19 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
         
         {/* Input placeholder */}
         {type === 'input' && (
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-              <Type className="h-3.5 w-3.5" />
+          <div className="space-y-2">
+            <div className="flex items-center gap-1 text-xs font-medium font-mono text-gray-500">
+              <Type className="h-3 w-3" />
               Content
             </div>
             
-            <div className="space-y-1">
-              <Label htmlFor="placeholder" className="text-xs">Placeholder</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="placeholder" className="text-[10px] md:text-xs">Placeholder</Label>
               <Input 
                 id="placeholder" 
                 value={properties.placeholder || ''} 
                 onChange={handlePlaceholderChange}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
           </div>
@@ -186,100 +187,100 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
         
         {/* Image source */}
         {type === 'image' && (
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-              <Type className="h-3.5 w-3.5" />
+          <div className="space-y-2">
+            <div className="flex items-center gap-1 text-xs font-medium font-mono text-gray-500">
+              <Type className="h-3 w-3" />
               Content
             </div>
             
-            <div className="space-y-1">
-              <Label htmlFor="src" className="text-xs">Image URL</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="src" className="text-[10px] md:text-xs">Image URL</Label>
               <Input 
                 id="src" 
                 value={properties.src || ''} 
                 onChange={handleSrcChange}
-                className="h-8 text-xs"
+                className="h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
           </div>
         )}
         
         {/* Style properties */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-medium font-mono text-gray-500">
-            <Palette className="h-3.5 w-3.5" />
+        <div className="space-y-2">
+          <div className="flex items-center gap-1 text-xs font-medium font-mono text-gray-500">
+            <Palette className="h-3 w-3" />
             Style
           </div>
           
-          {/* Colors */}
+          {/* Colors - More compact for mobile */}
           {type !== 'image' && (
-            <div className="space-y-1">
-              <Label htmlFor="text-color" className="text-xs">Text Color</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="text-color" className="text-[10px] md:text-xs">Text Color</Label>
               <div className="flex">
                 <Input 
                   id="text-color" 
                   type="color" 
                   value={properties.color || '#000000'} 
                   onChange={handleColorChange}
-                  className="w-12 h-8 p-1"
+                  className="w-8 h-7 md:h-8 p-0.5"
                 />
                 <Input 
                   value={properties.color || '#000000'} 
                   onChange={handleColorChange}
-                  className="flex-1 h-8 text-xs"
+                  className="flex-1 h-7 md:h-8 text-xs py-0 px-1.5"
                 />
               </div>
             </div>
           )}
           
           {/* Background color */}
-          <div className="space-y-1">
-            <Label htmlFor="bg-color" className="text-xs">Background Color</Label>
+          <div className="space-y-0.5">
+            <Label htmlFor="bg-color" className="text-[10px] md:text-xs">Background Color</Label>
             <div className="flex">
               <Input 
                 id="bg-color" 
                 type="color" 
                 value={properties.backgroundColor || 'transparent'} 
                 onChange={handleBgColorChange}
-                className="w-12 h-8 p-1"
+                className="w-8 h-7 md:h-8 p-0.5"
               />
               <Input 
                 value={properties.backgroundColor || 'transparent'} 
                 onChange={handleBgColorChange}
-                className="flex-1 h-8 text-xs"
+                className="flex-1 h-7 md:h-8 text-xs py-0 px-1.5"
               />
             </div>
           </div>
           
           {/* Border properties */}
           {type === 'input' && (
-            <div className="space-y-1">
-              <Label htmlFor="border-color" className="text-xs">Border Color</Label>
+            <div className="space-y-0.5">
+              <Label htmlFor="border-color" className="text-[10px] md:text-xs">Border Color</Label>
               <div className="flex">
                 <Input 
                   id="border-color" 
                   type="color" 
                   value={properties.borderColor || '#e2e8f0'} 
                   onChange={handleBorderColorChange}
-                  className="w-12 h-8 p-1"
+                  className="w-8 h-7 md:h-8 p-0.5"
                 />
                 <Input 
                   value={properties.borderColor || '#e2e8f0'} 
                   onChange={handleBorderColorChange}
-                  className="flex-1 h-8 text-xs"
+                  className="flex-1 h-7 md:h-8 text-xs py-0 px-1.5"
                 />
               </div>
             </div>
           )}
           
           {/* Border radius */}
-          <div className="space-y-2">
+          <div className="space-y-1">
             <div className="flex justify-between items-center">
-              <Label htmlFor="border-radius" className="text-xs flex items-center gap-1">
-                <Circle className="h-3.5 w-3.5" />
+              <Label htmlFor="border-radius" className="text-[10px] md:text-xs flex items-center gap-1">
+                <Circle className="h-3 w-3" />
                 Border Radius
               </Label>
-              <span className="text-xs font-mono text-gray-500">{properties.borderRadius}px</span>
+              <span className="text-[10px] md:text-xs font-mono text-gray-500">{properties.borderRadius}px</span>
             </div>
             <Slider 
               id="border-radius"
@@ -293,13 +294,13 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
           
           {/* Font size */}
           {type !== 'image' && (
-            <div className="space-y-2">
+            <div className="space-y-1">
               <div className="flex justify-between items-center">
-                <Label htmlFor="font-size" className="text-xs flex items-center gap-1">
-                  <Type className="h-3.5 w-3.5" />
+                <Label htmlFor="font-size" className="text-[10px] md:text-xs flex items-center gap-1">
+                  <Type className="h-3 w-3" />
                   Font Size
                 </Label>
-                <span className="text-xs font-mono text-gray-500">{properties.fontSize}px</span>
+                <span className="text-[10px] md:text-xs font-mono text-gray-500">{properties.fontSize}px</span>
               </div>
               <Slider 
                 id="font-size"
@@ -313,13 +314,13 @@ const PropertyPanel = ({ selectedComponent, onUpdateProperty, className }: Prope
           )}
           
           {/* Padding */}
-          <div className="space-y-2">
+          <div className="space-y-1">
             <div className="flex justify-between items-center">
-              <Label htmlFor="padding" className="text-xs flex items-center gap-1">
-                <Calendar className="h-3.5 w-3.5" />
+              <Label htmlFor="padding" className="text-[10px] md:text-xs flex items-center gap-1">
+                <Calendar className="h-3 w-3" />
                 Padding
               </Label>
-              <span className="text-xs font-mono text-gray-500">{properties.padding}px</span>
+              <span className="text-[10px] md:text-xs font-mono text-gray-500">{properties.padding}px</span>
             </div>
             <Slider 
               id="padding"
