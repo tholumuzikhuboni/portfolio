@@ -1,173 +1,163 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Code, Menu, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import useMobile from '@/hooks/use-mobile';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState('home');
-  
+  const isMobile = useMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, []);
 
   useEffect(() => {
-    // Set active link based on the current path
-    const path = location.pathname;
-    if (path === '/') {
-      setActiveLink('home');
-    } else if (path === '/projects') {
-      setActiveLink('projects');
-    } else if (path === '/hire-me') {
-      setActiveLink('hire-me');
-    } else if (path === '/contact') {
-      setActiveLink('contact');
-    }
-  }, [location]);
+    // Close mobile menu when route changes
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const navItems = [
-    { name: 'Home', path: '/', id: 'home' },
-    { name: 'Projects', path: '/projects', id: 'projects' },
-    { name: 'Hire Me', path: '/hire-me', id: 'hire-me' },
-    { name: 'Contact', path: '/contact', id: 'contact' }
+  const navigationLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/skills', label: 'Skills' },
+    { path: '/hire-me', label: 'Hire Me' },
+    { path: '/contact', label: 'Contact' },
   ];
 
+  const navbarClasses = cn(
+    "fixed top-0 w-full z-50 transition-all duration-300 py-3 md:py-4 px-4 md:px-6",
+    isScrolled ? "bg-white/80 shadow-nav backdrop-blur-sm" : "bg-transparent"
+  );
+
   return (
-    <header 
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 backdrop-blur-sm bg-white/80 shadow-nav",
-        scrolled && "py-3 shadow-md"
-      )}
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <Code className="h-6 w-6 text-code-purple group-hover:text-code-blue transition-colors duration-300" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-code-green animate-pulse" />
-            </div>
-            <span className="font-mono font-medium text-lg relative overflow-hidden bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink">
-              Tholumuzi.dev
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink group-hover:w-full transition-all duration-700"></span>
-            </span>
-          </Link>
-          
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link 
-                key={item.name} 
-                to={item.path}
-                className="relative text-sm font-medium font-mono text-foreground/80 hover:text-foreground transition-colors duration-200 group"
-                onClick={() => setActiveLink(item.id)}
-              >
-                <div className="relative z-10 overflow-hidden">
-                  <span className="relative z-10">
-                    {item.name}
-                  </span>
-                  <div className={cn(
-                    "absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink transition-all duration-300 group-hover:w-full",
-                    activeLink === item.id && "w-full"
-                  )}></div>
-                </div>
-                
-                {/* Visual elements */}
-                <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-code-blue scale-0 group-hover:scale-100 transition-all duration-300"></div>
-                <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-code-purple scale-0 group-hover:scale-100 transition-all duration-300"></div>
-                
-                {/* Particle effects */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full">
-                  <div className="absolute -top-2 left-1/4 w-0.5 h-0.5 rounded-full bg-code-green opacity-0 group-hover:opacity-100 group-hover:animate-ping"></div>
-                  <div className="absolute -top-3 left-1/2 w-0.5 h-0.5 rounded-full bg-code-yellow opacity-0 group-hover:opacity-100 group-hover:animate-ping" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="absolute -top-2 left-3/4 w-0.5 h-0.5 rounded-full bg-code-pink opacity-0 group-hover:opacity-100 group-hover:animate-ping" style={{ animationDelay: '0.4s' }}></div>
-                </div>
-                
-                {/* Highlight glow */}
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-r from-code-blue/0 via-code-purple/5 to-code-pink/0 opacity-0 rounded-md -z-10 blur-md transition-opacity duration-300 group-hover:opacity-100",
-                  activeLink === item.id && "opacity-50"
-                )}></div>
-              </Link>
-            ))}
-          </nav>
-          
-          <button 
-            onClick={toggleMenu}
-            className="bg-gradient-to-r from-code-blue to-code-purple rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden group md:hidden"
-            aria-label="Toggle navigation menu"
+    <nav className={navbarClasses}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <NavLink to="/" className="text-xl font-bold font-mono text-foreground">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="flex items-center"
           >
-            <Menu className="h-5 w-5 text-white relative z-10" />
-            <div className="absolute inset-0 bg-white/20 scale-0 rounded-full group-hover:scale-100 transition-transform duration-300"></div>
-            <div className="absolute -inset-px rounded-full border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
+            <span className="text-xl font-bold gradient-text">dev</span>
+            <span className="text-foreground">Portfolio</span>
+          </motion.div>
+        </NavLink>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-1">
+          <ul className="flex space-x-1">
+            {navigationLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    cn(
+                      "relative px-3 py-2 rounded-md text-sm font-medium font-mono transition-colors",
+                      isActive
+                        ? "text-code-purple"
+                        : "text-foreground/70 hover:text-foreground"
+                    )
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {link.label}
+                      {isActive && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-code-purple rounded-full"
+                          layoutId="navbar-indicator"
+                          transition={{ 
+                            type: "spring", 
+                            stiffness: 500, 
+                            damping: 30 
+                          }}
+                        />
+                      )}
+                    </>
+                  )}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          
+          <Button 
+            asChild
+            variant="outline" 
+            size="sm"
+            className="ml-2 font-mono text-xs border-code-purple text-code-purple hover:bg-code-purple/10"
+          >
+            <NavLink to="/contact">
+              Get in Touch
+            </NavLink>
+          </Button>
         </div>
 
-        {/* Mobile Navigation Menu with enhanced visuals */}
-        {menuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg py-4 px-6 animate-fade-in">
-            <nav className="flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name} 
-                  to={item.path}
-                  className="flex items-center gap-3 py-3 px-4 rounded-md text-sm font-medium font-mono text-foreground/80 hover:text-foreground relative overflow-hidden group transition-colors duration-200"
-                  onClick={() => {
-                    setActiveLink(item.id);
-                    setMenuOpen(false);
-                  }}
-                >
-                  {/* Visual container */}
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-code-blue/10 to-code-purple/10 relative overflow-hidden">
-                    <span className="absolute w-1.5 h-1.5 rounded-full bg-code-pink -top-0.5 right-1 animate-pulse"></span>
-                    <span className="absolute w-1 h-1 rounded-full bg-code-blue bottom-1 left-0.5 animate-pulse delay-300"></span>
-                    
-                    {/* Animated brackets */}
-                    <span className="text-xs text-code-purple/70 font-mono">{`{ }`}</span>
-                  </div>
-                  
-                  <span className="relative">
-                    {item.name}
-                    <span className={cn(
-                      "absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue to-code-pink transition-all duration-300 group-hover:w-full",
-                      activeLink === item.id && "w-full"
-                    )}></span>
-                  </span>
-                  
-                  {/* Background hover effect */}
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-code-blue/0 via-code-purple/5 to-code-pink/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                </Link>
-              ))}
-            </nav>
-            
-            {/* Visual decorations */}
-            <div className="absolute bottom-5 left-10 w-20 h-20 rounded-full bg-code-blue/5 blur-xl"></div>
-            <div className="absolute top-10 right-10 w-16 h-16 rounded-full bg-code-purple/5 blur-xl"></div>
-            <div className="absolute bottom-10 right-20 h-px w-10 bg-gradient-to-r from-transparent via-code-green/30 to-transparent"></div>
-            <div className="absolute top-16 left-14 h-px w-6 bg-gradient-to-r from-transparent via-code-pink/30 to-transparent"></div>
-          </div>
-        )}
-
-        {/* Added visual highlights */}
-        <div className="hidden md:block absolute top-1/2 -translate-y-1/2 -left-12 w-24 h-24 rounded-full bg-code-blue/5 blur-xl"></div>
-        <div className="hidden md:block absolute top-1/2 -translate-y-1/2 -right-12 w-24 h-24 rounded-full bg-code-purple/5 blur-xl"></div>
-        <div className="hidden md:block absolute top-5 left-1/4 h-px w-10 bg-gradient-to-r from-transparent via-code-green/20 to-transparent"></div>
-        <div className="hidden md:block absolute bottom-2 right-1/3 h-px w-16 bg-gradient-to-r from-transparent via-code-pink/20 to-transparent"></div>
+        {/* Mobile Navigation Button */}
+        <div className="md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
       </div>
-    </header>
+
+      {/* Mobile Navigation Menu */}
+      {isMobile && (
+        <motion.div
+          className={`absolute top-full left-0 right-0 bg-white shadow-md ${isMenuOpen ? 'block' : 'hidden'}`}
+          initial={false}
+          animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ul className="flex flex-col p-4 space-y-2">
+            {navigationLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    cn(
+                      "block px-4 py-2 rounded-md text-sm font-medium font-mono transition-colors",
+                      isActive
+                        ? "bg-code-purple/10 text-code-purple"
+                        : "text-foreground/70 hover:bg-gray-100"
+                    )
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+            <li>
+              <NavLink
+                to="/contact"
+                className="block px-4 py-2 mt-2 bg-code-purple/10 text-code-purple rounded-md text-sm font-medium font-mono"
+              >
+                Get in Touch
+              </NavLink>
+            </li>
+          </ul>
+        </motion.div>
+      )}
+    </nav>
   );
 };
 
