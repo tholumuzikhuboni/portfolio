@@ -20,7 +20,7 @@ const HeroSection = () => {
   role: "Software Developer",
   education: "Higher Diploma in IT (Software Development)",
   passions: [
-    "Web Development",
+    "Software Development",
     "UI/UX Design",
     "Clean Code"
   ],
@@ -128,7 +128,7 @@ const HeroSection = () => {
             className="flex items-center gap-4 pt-4"
           >
             <a 
-              href="https://github.com/tholumuzikhubon" 
+              href="https://github.com/tholumuzikhuboni" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-[#333] hover:bg-[#24292E] text-white rounded-full p-2 transition-all hover:scale-110 active:scale-95 flex items-center justify-center w-10 h-10"
