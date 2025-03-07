@@ -24,21 +24,12 @@ const Toaster = ({ ...props }: ToasterProps) => {
             "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
           title: "group-[.toast]:font-mono group-[.toast]:font-medium",
         },
-        icons: {
-          success: (
-            <div className="h-5 w-5 rounded-full bg-code-green/20 flex items-center justify-center">
-              <span className="text-code-green text-lg">✓</span>
-            </div>
-          ),
-          error: (
-            <div className="h-5 w-5 rounded-full bg-code-red/20 flex items-center justify-center">
-              <span className="text-code-red text-lg">×</span>
-            </div>
-          ),
-        },
       }}
       {...props}
-    />
+    >
+      {/* Custom icon rendering through children instead of through the invalid icons prop */}
+      {props.children}
+    </Sonner>
   )
 }
 
