@@ -29,6 +29,8 @@ const Navbar = () => {
       setActiveLink('home');
     } else if (path === '/projects') {
       setActiveLink('projects');
+    } else if (path === '/about') {
+      setActiveLink('about');
     } else if (path === '/contact') {
       setActiveLink('contact');
     }
@@ -40,6 +42,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/', id: 'home' },
+    { name: 'About', path: '/about', id: 'about' },
     { name: 'Projects', path: '/projects', id: 'projects' },
     { name: 'Contact', path: '/contact', id: 'contact' }
   ];

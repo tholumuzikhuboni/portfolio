@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import PreLoader from "./components/PreLoader";
 
@@ -53,6 +54,11 @@ const App = () => (
           <Route path="/projects" element={
             <PageTransition>
               <Projects />
+            </PageTransition>
+          } />
+          <Route path="/about" element={
+            <PageTransition>
+              <About />
             </PageTransition>
           } />
           <Route path="/contact" element={
