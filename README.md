@@ -1,11 +1,11 @@
 
-# Tholumuzi.dev - Personal Portfolio Website
+# Tholumuzi - Personal Portfolio
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 ## Overview
 
-This repository contains the source code for [Tholumuzi.dev](https://tholumuzi.dev), a personal portfolio website showcasing my projects, skills, and professional journey as a developer.
+This repository contains the source code for [Tholumuzi.dev](https://tholumuzi.co.za), a personal portfolio website showcasing my projects, skills, and professional journey as a developer.
 
 ## Features
 
@@ -39,7 +39,7 @@ To run this project locally:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/tholumuzikhuboni/portfolio.git
 
 # Navigate to the project directory
 cd <project-directory>
@@ -73,5 +73,4 @@ This portfolio's design, content, and code may not be copied, modified, distribu
 
 ## Contact
 
-For inquiries, please reach out through the contact form on the website or via email at [your-email@example.com].
-
+For inquiries, please reach out through the contact form on the website or via email at [contact@tholumuzi.co.za].
