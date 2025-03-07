@@ -139,7 +139,7 @@ const NotFound = () => {
               <span className="text-gray-600 text-xs ml-2">terminal @ tholumuzi.dev</span>
             </div>
             
-            <div className="text-gray-800 space-y-1 h-[180px] md:h-[200px] overflow-y-auto">
+            <div className="text-gray-800 space-y-1 h-[220px] sm:h-[200px] md:h-[200px] overflow-y-auto">
               {terminalLines.map((line, index) => (
                 <TypewriterText
                   key={index}
