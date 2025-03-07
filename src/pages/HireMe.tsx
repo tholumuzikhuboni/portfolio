@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   Code, 
   Laptop, 
-  Briefcase, 
+  Server, 
   TrendingUp, 
   Cloud, 
   PenTool, 
@@ -31,7 +30,7 @@ const HireMe = () => {
     },
     {
       title: "IT Consulting",
-      icon: <Briefcase className="h-10 w-10 text-code-green" />,
+      icon: <Server className="h-10 w-10 text-code-green" />,
       description: "Expert guidance on technology decisions to optimize your business operations and strategy.",
       skills: ["Technology Assessment", "Strategic Planning", "Process Optimization", "Security Consulting"]
     },
