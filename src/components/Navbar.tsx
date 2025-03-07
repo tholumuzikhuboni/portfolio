@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -42,7 +41,6 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/', id: 'home' },
-    { name: 'Skills', path: '/skills', id: 'skills' },
     { name: 'Projects', path: '/projects', id: 'projects' },
     { name: 'Hire Me', path: '/hire-me', id: 'hire-me' },
     { name: 'Contact', path: '/contact', id: 'contact' }
