@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
@@ -39,12 +40,72 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+// Falling code particles component
+const FallingCodeParticles = () => {
+  const totalParticles = 30;
+  const particles = [];
+  const symbols = ['<>', '/>', '{}', '()', '[]', ';', '=', '+', '*', '&&', '||', '=>', '...'];
+  
+  for (let i = 0; i < totalParticles; i++) {
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+    const size = Math.random() * 1.5 + 0.5;
+    const initialPosition = {
+      x: `${Math.random() * 100}%`,
+      y: `-${Math.random() * 100 + 20}%`
+    };
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 5;
+    
+    particles.push(
+      <motion.div
+        key={`particle-${i}`}
+        className="absolute text-code-blue/10 font-mono pointer-events-none select-none"
+        initial={{ 
+          x: initialPosition.x, 
+          y: initialPosition.y,
+          opacity: 0.2,
+          scale: size
+        }}
+        animate={{
+          y: '120vh',
+          opacity: [0.2, 0.5, 0.2],
+          rotate: Math.random() * 360
+        }}
+        transition={{
+          duration: duration,
+          repeat: Infinity,
+          delay: delay,
+          ease: "linear"
+        }}
+        style={{
+          fontSize: `${size}rem`,
+          color: i % 5 === 0 ? 'var(--code-blue)' : 
+                 i % 5 === 1 ? 'var(--code-purple)' : 
+                 i % 5 === 2 ? 'var(--code-pink)' : 
+                 i % 5 === 3 ? 'var(--code-green)' : 
+                 'var(--code-yellow)',
+          opacity: 0.1
+        }}
+      >
+        {randomSymbol}
+      </motion.div>
+    );
+  }
+  
+  return (
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+      {particles}
+    </div>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <FallingCodeParticles />
         <Routes>
           <Route path="/" element={
             <PageTransition>
