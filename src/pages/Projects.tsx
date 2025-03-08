@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Star, GitFork, ExternalLink, Github, Code, BookOpen, Layers, Terminal, Sparkles, Atom, Zap, Database, Rocket, CircleCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
 
 interface Repository {
   id: number;
@@ -85,72 +84,9 @@ const Projects = () => {
     return colors[language] || "bg-gray-500";
   };
 
-  // Enhanced falling code particles
-  const generateFallingParticles = () => {
-    const totalParticles = 40;
-    const particles = [];
-    const symbols = ['<>', '/>', '{}', '()', '[]', ';', '=', '+', '*', '&&', '||', '=>', '...'];
-    
-    for (let i = 0; i < totalParticles; i++) {
-      // Distribute more evenly across the width (x position)
-      const xPosition = `${5 + (i % 10) * 9 + (Math.random() * 5)}%`;
-      
-      const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-      const size = Math.random() * 1.5 + 0.5;
-      const initialPosition = {
-        x: xPosition,
-        y: `-${Math.random() * 100 + 20}%`
-      };
-      const duration = Math.random() * 20 + 10;
-      const delay = Math.random() * 5;
-      
-      particles.push(
-        <motion.div
-          key={`particle-${i}`}
-          className="absolute text-code-blue/10 font-mono pointer-events-none select-none"
-          initial={{ 
-            x: initialPosition.x, 
-            y: initialPosition.y,
-            opacity: 0.2,
-            scale: size
-          }}
-          animate={{
-            y: '120vh',
-            opacity: [0.2, 0.5, 0.2],
-            rotate: Math.random() * 360
-          }}
-          transition={{
-            duration: duration,
-            repeat: Infinity,
-            delay: delay,
-            ease: "linear"
-          }}
-          style={{
-            fontSize: `${size}rem`,
-            color: i % 5 === 0 ? 'var(--code-blue)' : 
-                   i % 5 === 1 ? 'var(--code-purple)' : 
-                   i % 5 === 2 ? 'var(--code-pink)' : 
-                   i % 5 === 3 ? 'var(--code-green)' : 
-                   'var(--code-yellow)',
-            opacity: 0.1
-          }}
-        >
-          {randomSymbol}
-        </motion.div>
-      );
-    }
-    
-    return particles;
-  };
-
   return (
     <div className="min-h-screen bg-background pb-20 relative">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Add falling code particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {generateFallingParticles()}
-        </div>
-        
         {/* Enhanced background elements */}
         <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-code-blue/15 via-code-purple/20 to-code-pink/15 blur-3xl animate-pulse" style={{ animationDuration: '15s' }} />
         <div className="absolute -bottom-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-tr from-code-yellow/15 via-code-green/20 to-code-blue/15 blur-3xl animate-pulse" style={{ animationDuration: '18s', animationDelay: '2s' }} />
