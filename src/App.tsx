@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import HireMe from "./pages/HireMe";
-import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import PreLoader from "./components/PreLoader";
 
@@ -65,11 +64,6 @@ const App = () => (
           <Route path="/contact" element={
             <PageTransition>
               <Contact />
-            </PageTransition>
-          } />
-          <Route path="/about" element={
-            <PageTransition>
-              <About />
             </PageTransition>
           } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
