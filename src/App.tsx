@@ -40,17 +40,20 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// Falling code particles component
+// Falling code particles component - improved distribution
 const FallingCodeParticles = () => {
   const totalParticles = 30;
   const particles = [];
   const symbols = ['<>', '/>', '{}', '()', '[]', ';', '=', '+', '*', '&&', '||', '=>', '...'];
   
   for (let i = 0; i < totalParticles; i++) {
+    // Distribute more evenly across the width (x position)
+    const xPosition = `${5 + (i % 10) * 9 + (Math.random() * 5)}%`;
+    
     const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
     const size = Math.random() * 1.5 + 0.5;
     const initialPosition = {
-      x: `${Math.random() * 100}%`,
+      x: xPosition,
       y: `-${Math.random() * 100 + 20}%`
     };
     const duration = Math.random() * 20 + 10;

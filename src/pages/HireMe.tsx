@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,8 +19,31 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEmblaCarousel } from "embla-carousel-react";
+import { useMobile } from "@/hooks/use-mobile";
 
 const HireMe = () => {
+  const isMobile = useMobile();
+  
+  // Initialize Embla Carousel with auto-scroll
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    dragFree: true,
+    align: "start",
+    containScroll: "trimSnaps"
+  });
+  
+  // Auto-scroll effect
+  useEffect(() => {
+    if (emblaApi) {
+      const autoplay = setInterval(() => {
+        emblaApi.scrollNext();
+      }, 3000);
+      
+      return () => clearInterval(autoplay);
+    }
+  }, [emblaApi]);
+  
   const services = [
     {
       title: "Web Development",
@@ -82,17 +105,20 @@ const HireMe = () => {
     }
   };
   
-  // Falling animation elements
-  const totalParticles = 40;
+  // Enhanced falling animations
   const generateParticles = () => {
+    const totalParticles = 40;
     const particles = [];
     const symbols = ['<>', '/>', '{}', '()', '[]', ';', '=', '+', '*', '&&', '||', '=>', '...'];
     
     for (let i = 0; i < totalParticles; i++) {
+      // Distribute more evenly across the width (x position)
+      const xPosition = `${5 + (i % 9) * 10 + (Math.random() * 5)}%`;
+      
       const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
       const size = Math.random() * 1.5 + 0.5;
       const initialPosition = {
-        x: `${Math.random() * 100}%`,
+        x: xPosition,
         y: `-${Math.random() * 100 + 20}%`
       };
       const duration = Math.random() * 20 + 10;
@@ -125,7 +151,8 @@ const HireMe = () => {
                    i % 5 === 1 ? 'var(--code-purple)' : 
                    i % 5 === 2 ? 'var(--code-pink)' : 
                    i % 5 === 3 ? 'var(--code-green)' : 
-                   'var(--code-yellow)'
+                   'var(--code-yellow)',
+            opacity: 0.1
           }}
         >
           {randomSymbol}
@@ -140,7 +167,7 @@ const HireMe = () => {
     <>
       <Navbar />
       <div className="min-h-screen pt-24 pb-16 px-4 md:px-6 relative overflow-hidden">
-        {/* Falling animations */}
+        {/* Falling animations - distributed across screen */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {generateParticles()}
         </div>
@@ -207,46 +234,84 @@ const HireMe = () => {
             </motion.div>
           </div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {services.map((service, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full border border-gray-200 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 group overflow-hidden">
-                  <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start">
-                      <div className="p-3 rounded-xl bg-gray-50 border border-gray-100 transition-colors group-hover:bg-gradient-to-br group-hover:from-gray-50 group-hover:to-white group-hover:shadow-md">
-                        {service.icon}
-                      </div>
-                      <div className="h-px w-10 bg-gradient-to-r from-transparent via-code-purple/20 to-transparent mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    </div>
-                    <CardTitle className="text-xl font-mono mt-4 text-foreground group-hover:gradient-text transition-colors duration-500">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-muted-foreground mb-4 font-mono text-sm">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.skills.map((skill, idx) => (
-                        <li key={idx} className="flex items-center gap-2 font-mono text-xs text-foreground/70">
-                          <CheckCircle className="h-3.5 w-3.5 text-code-green flex-shrink-0" />
-                          <span>{skill}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Services Carousel */}
+          <div className="mb-16">
+            <motion.h2 
+              className="text-2xl md:text-3xl font-mono font-bold mb-6 gradient-text text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <Sparkles className="inline h-5 w-5 text-code-yellow mr-2" />
+              Services I Offer
+            </motion.h2>
+            
+            <motion.div 
+              className="overflow-hidden"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              ref={emblaRef}
+            >
+              <div className="flex">
+                {services.map((service, index) => (
+                  <motion.div 
+                    key={index} 
+                    variants={itemVariants}
+                    className={`flex-none ${isMobile ? 'w-[85%]' : 'w-[350px]'} px-3`}
+                  >
+                    <Card className="h-full border border-gray-200 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 group overflow-hidden">
+                      <CardHeader className="pb-4">
+                        <div className="flex justify-between items-start">
+                          <div className="p-3 rounded-xl bg-gray-50 border border-gray-100 transition-colors group-hover:bg-gradient-to-br group-hover:from-gray-50 group-hover:to-white group-hover:shadow-md">
+                            {service.icon}
+                          </div>
+                          <div className="h-px w-10 bg-gradient-to-r from-transparent via-code-purple/20 to-transparent mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                        </div>
+                        <CardTitle className="text-xl font-mono mt-4 text-foreground group-hover:gradient-text transition-colors duration-500">
+                          {service.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <p className="text-muted-foreground mb-4 font-mono text-sm">
+                          {service.description}
+                        </p>
+                        <ul className="space-y-2">
+                          {service.skills.map((skill, idx) => (
+                            <li key={idx} className="flex items-center gap-2 font-mono text-xs text-foreground/70">
+                              <CheckCircle className="h-3.5 w-3.5 text-code-green flex-shrink-0" />
+                              <span>{skill}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            {/* Carousel indicators */}
+            <div className="flex justify-center mt-6 gap-2">
+              {services.map((_, index) => (
+                <motion.button
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-gray-300 focus:outline-none"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{ opacity: 0.5 }}
+                  animate={{ 
+                    opacity: emblaApi?.selectedScrollSnap() === index ? 1 : 0.5,
+                    backgroundColor: emblaApi?.selectedScrollSnap() === index ? 'var(--code-purple)' : '#d1d5db'
+                  }}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                />
+              ))}
+            </div>
+          </div>
 
           <motion.div 
-            className="mt-16 p-6 md:p-8 rounded-xl bg-gradient-to-r from-code-blue/5 to-code-purple/5 border border-gray-200 shadow-sm relative overflow-hidden"
+            className="mt-8 p-6 md:p-8 rounded-xl bg-gradient-to-r from-code-blue/5 to-code-purple/5 border border-gray-200 shadow-sm relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
