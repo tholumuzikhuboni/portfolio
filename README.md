@@ -5,7 +5,7 @@
 
 ## Overview
 
-This repository contains the source code for [Tholumuzi.dev](https://tholumuzi.co.za), a personal portfolio website showcasing my projects, skills, and professional journey as a developer.
+This repository contains the source code for [Tholumuzi](https://tholumuzi.co.za), a personal portfolio website showcasing my projects, skills, and professional journey as a developer.
 
 ## Features
 
