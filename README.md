@@ -9,11 +9,11 @@ This repository contains the source code for [Tholumuzi](https://tholumuzi.co.za
 
 ## Features
 
-- **Responsive Design**: Optimized for all device sizes
-- **Interactive UI**: Modern and engaging user interface with animations
-- **Project Showcase**: Detailed portfolio of past and current projects
-- **Contact Form**: Easy way for potential clients and employers to reach out
-- **Hire Me**: Information about my services and availability
+- **Responsive Design**: Optimized for all device sizes.
+- **Interactive UI**: Modern and engaging user interface with animations.
+- **Project Showcase**: Detailed portfolio of past and current projects.
+- **Contact Form**: Easy way for potential clients and employers to reach out.
+- **Hire Me**: Information about my services and availability.
 
 ## Technologies Used
 
