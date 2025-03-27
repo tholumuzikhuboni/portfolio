@@ -187,8 +187,8 @@ const Contact = () => {
                 icon={<Mail className="h-8 w-8 text-white" />}
                 title="Email"
                 description="Send me an email directly"
-                content="contact@tholumuzi.co.za"
-                link="mailto:contact@tholumuzi.co.za"
+                content="tholumuzi@linkedme.co.za"
+                link="mailto:tholumuzi@linkedme.co.za"
                 color="bg-gradient-to-br from-code-blue to-code-purple"
               />
               
