@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Particle {
   id: number;
@@ -34,6 +35,7 @@ const FallingCodeParticles = () => {
     width: typeof window !== 'undefined' ? window.innerWidth : 1000,
     height: typeof window !== 'undefined' ? window.innerHeight : 800
   });
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Handle window resize
@@ -48,10 +50,12 @@ const FallingCodeParticles = () => {
     
     // Generate initial particles
     const initialParticles: Particle[] = [];
-    const particleCount = Math.min(Math.floor(windowSize.width / 40), 30); // Responsive count
+    const particleCount = isMobile 
+      ? Math.min(Math.floor(windowSize.width / 80), 15) // Fewer particles on mobile
+      : Math.min(Math.floor(windowSize.width / 40), 30); // Regular count for desktop
     
     for (let i = 0; i < particleCount; i++) {
-      initialParticles.push(createParticle(windowSize.width, i));
+      initialParticles.push(createParticle(windowSize.width, i, windowSize.width, particleCount));
     }
     
     setParticles(initialParticles);
@@ -72,7 +76,7 @@ const FallingCodeParticles = () => {
             
             // Reset particle if it's off screen
             if (newY > windowSize.height) {
-              return createParticle(windowSize.width);
+              return createParticle(windowSize.width, undefined, windowSize.width, particleCount);
             }
             
             return {
@@ -92,19 +96,25 @@ const FallingCodeParticles = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [windowSize.height, windowSize.width]);
+  }, [windowSize.height, windowSize.width, isMobile]);
 
-  const createParticle = (width: number, index?: number): Particle => {
-    // Distribute particles evenly across the width initially if index is provided
-    const x = index !== undefined 
-      ? (width / Math.min(Math.floor(width / 40), 30)) * index + Math.random() * 20
-      : Math.random() * width;
+  const createParticle = (width: number, index?: number, totalWidth?: number, totalParticles?: number): Particle => {
+    // For better distribution across the width
+    let x;
+    
+    if (index !== undefined && totalWidth && totalParticles) {
+      // Divide screen into sections and place particles more evenly
+      const sectionWidth = totalWidth / totalParticles;
+      x = sectionWidth * index + (Math.random() * sectionWidth * 0.8);
+    } else {
+      x = Math.random() * width;
+    }
       
     return {
       id: Math.random(),
       x,
       y: -100 - Math.random() * 500, // Start above the screen at various positions
-      size: Math.random() * 12 + 8,
+      size: Math.random() * (isMobile ? 10 : 12) + (isMobile ? 6 : 8), // Smaller on mobile
       speed: Math.random() * 1.5 + 0.5,
       opacity: Math.random() * 0.5 + 0.1,
       content: codeSnippets[Math.floor(Math.random() * codeSnippets.length)],
