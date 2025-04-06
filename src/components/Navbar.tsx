@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -31,8 +30,6 @@ const Navbar = () => {
       setActiveLink('home');
     } else if (path === '/projects') {
       setActiveLink('projects');
-    } else if (path === '/hire-me') {
-      setActiveLink('hire-me');
     } else if (path === '/about') {
       setActiveLink('about');
     } else if (path === '/contact') {
@@ -48,7 +45,6 @@ const Navbar = () => {
     { name: 'Home', path: '/', id: 'home' },
     { name: 'About', path: '/about', id: 'about' },
     { name: 'Projects', path: '/projects', id: 'projects' },
-    { name: 'Hire Me', path: '/hire-me', id: 'hire-me' },
     { name: 'Contact', path: '/contact', id: 'contact' }
   ];
 

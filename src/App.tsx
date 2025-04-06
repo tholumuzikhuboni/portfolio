@@ -8,9 +8,10 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import HireMe from "./pages/HireMe";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import PreLoader from "./components/PreLoader";
+import FallingCodeParticles from "./components/FallingCodeParticles";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
     <>
       {loading && <PreLoader onComplete={() => setLoading(false)} />}
       <div style={{ display: loading ? 'none' : 'block' }}>
+        <FallingCodeParticles />
         {children}
       </div>
     </>
@@ -56,9 +58,9 @@ const App = () => (
               <Projects />
             </PageTransition>
           } />
-          <Route path="/hire-me" element={
+          <Route path="/about" element={
             <PageTransition>
-              <HireMe />
+              <About />
             </PageTransition>
           } />
           <Route path="/contact" element={
