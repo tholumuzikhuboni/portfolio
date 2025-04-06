@@ -29,48 +29,63 @@
     <!-- Geo Meta Tags -->
     <meta name="geo.region" content="ZA" />
     <meta name="geo.placename" content="South Africa" />
-    
-  </head>
-
-  <body>
-    <div id="root"></div>
-    
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://tholumuzi.co.za/#person",
-        "name": "Tholumuzi Khuboni",
-        "givenName": "Tholumuzi",
-        "familyName": "Khuboni",
-        "url": "https://tholumuzi.co.za",
-        "image": "https://tholumuzi.co.za/IMG_20250303_105526_891.webp
-        "sameAs": [
-          "https://github.com/tholumuzikhuboni",
-          "https://linkedin.com/in/tholumuzikhuboni",
-          "https://www.instagram.com/tholumuzikhuboni",
-          "https://www.facebook.com/profile.php?id=61560262494384"
-        ],
-        "jobTitle": "Software Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Independent"
-        },
-        "description": "Tholumuzi Khuboni is a professional software developer specializing in web development, UI/UX design, and cloud solutions. Based in South Africa, Tholumuzi crafts elegant, user-friendly web applications with clean code.",
-        "knowsAbout": ["Web Development", "UI/UX Design", "React", "Google Cloud", "AWS", "Software Development"],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Software Developer",
-          "occupationLocation": {
-            "@type": "Country",
-            "name": "South Africa"
-          },
-          "skills": "React, JavaScript, TypeScript, Google Cloud, AWS, UI/UX Design"
-        }
-      }
-    </script>
-    
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://tholumuzi.co.za/#person",
+  "name": "Tholumuzi Khuboni",
+  "givenName": "Tholumuzi",
+  "familyName": "Khuboni",
+  "url": "https://tholumuzi.co.za",
+  "image": [ // Changed to an array of ImageObjects
+    {
+      "@type": "ImageObject",
+      "url": "https://tholumuzi.co.za/image1.webp", // Replace with your actual URL
+      "caption": "Tholumuzi Khuboni - Profile Picture", // Optional
+      "name": "Profile Picture" // Optional
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://tholumuzi.co.za/image2.jpg",  // Replace with your actual URL
+      "caption": "Tholumuzi working on a project", // Optional
+      "name": "Working on project" // Optional
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://tholumuzi.co.za/image3.png",  // Replace with your actual URL
+      "caption": "Tholumuzi at a tech event", // Optional
+      "name": "Tech event attendance" // Optional
+    }
+  ],
+  "sameAs": [
+    "https://github.com/tholumuzikhuboni",
+    "https://linkedin.com/in/tholumuzikhuboni",
+    "https://www.instagram.com/tholumuzikhuboni",
+    "https://www.facebook.com/profile.php?id=61560262494384"
+  ],
+  "jobTitle": "Software Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Independent"
+  },
+  "description": "Tholumuzi Khuboni is a professional software developer specializing in web development, UI/UX design, and cloud solutions. Based in South Africa, Tholumuzi crafts elegant, user-friendly web applications with clean code.",
+  "knowsAbout": ["Web Development", "UI/UX Design", "React", "Google Cloud", "AWS", "Software Development"],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Software Developer",
+    "occupationLocation": {
+      "@type": "Country",
+      "name": "South Africa"
+    },
+    "skills": ["React", "JavaScript", "TypeScript", "Google Cloud", "AWS", "UI/UX Design"]
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>   
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
