@@ -14,7 +14,6 @@ import {
   Layers, 
   Grid3X3
 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -84,6 +83,14 @@ const About = () => {
     <>
       <Navbar />
       <div className="min-h-screen pt-24 pb-16 px-4 md:px-6 bg-gradient-to-b from-background to-background/90">
+        {/* Background effects */}
+        <div className="fixed inset-0 z-[-1] overflow-hidden opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-code-blue/10 filter blur-[120px]"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-code-purple/10 filter blur-[120px]"></div>
+          <div className="absolute top-2/3 right-1/4 w-64 h-64 rounded-full bg-code-pink/10 filter blur-[80px]"></div>
+        </div>
+        
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -227,18 +234,16 @@ const About = () => {
                   whileHover={{ y: -10, transition: { type: "spring", stiffness: 400 } }}
                   className="bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl overflow-hidden group hover:shadow-lg transition-all duration-300"
                 >
-                  <Card className="h-full border-0 bg-transparent overflow-hidden">
-                    <CardContent className="p-6 relative">
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-gray-100/50 to-transparent rounded-full blur-xl -mr-5 -mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="flex flex-col items-center text-center">
-                        <div className="h-14 w-14 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                          {activity.icon}
-                        </div>
-                        <h3 className="font-mono font-semibold text-lg mb-2">{activity.text}</h3>
-                        <p className="text-sm text-foreground/70 font-mono">{activity.description}</p>
+                  <div className="p-6 relative">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-gray-100/50 to-transparent rounded-full blur-xl -mr-5 -mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="flex flex-col items-center text-center">
+                      <div className="h-14 w-14 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        {activity.icon}
                       </div>
-                    </CardContent>
-                  </Card>
+                      <h3 className="font-mono font-semibold text-lg mb-2">{activity.text}</h3>
+                      <p className="text-sm text-foreground/70 font-mono">{activity.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
