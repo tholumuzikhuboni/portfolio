@@ -64,25 +64,6 @@ const Index = () => {
                   From concept to deployment, I specialize in creating seamless digital experiences that combine 
                   <span className="text-code-blue"> elegant design</span> with <span className="text-code-green">powerful functionality</span>.
                 </p>
-                
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
-                    <div className="text-code-blue mb-2 font-mono text-sm">Frontend</div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-code-blue/10 text-code-blue rounded text-xs">React</span>
-                      <span className="px-2 py-1 bg-code-purple/10 text-code-purple rounded text-xs">TypeScript</span>
-                      <span className="px-2 py-1 bg-code-green/10 text-code-green rounded text-xs">Tailwind</span>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 backdrop-blur-sm p-4 rounded-lg border border-white/10">
-                    <div className="text-code-yellow mb-2 font-mono text-sm">Backend</div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-code-yellow/10 text-code-yellow rounded text-xs">Node.js</span>
-                      <span className="px-2 py-1 bg-code-pink/10 text-code-pink rounded text-xs">APIs</span>
-                      <span className="px-2 py-1 bg-code-green/10 text-code-green rounded text-xs">Database</span>
-                    </div>
-                  </div>
-                </div>
               </div>
               
               <div className="w-full md:w-1/2 relative">

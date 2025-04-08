@@ -62,16 +62,33 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2 group">
             <motion.div 
               className="relative" 
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
               <Code className="h-6 w-6 text-code-purple group-hover:text-code-blue transition-colors duration-300" />
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-code-green animate-pulse" />
             </motion.div>
-            <span className="font-mono font-medium text-lg relative overflow-hidden bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink">
-              Tholumuzi.dev
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink group-hover:w-full transition-all duration-700"></span>
-            </span>
+            <div className="overflow-hidden">
+              <motion.span 
+                className="font-mono font-bold text-xl relative block bg-clip-text text-transparent bg-gradient-to-r from-code-blue via-code-purple to-code-pink"
+                whileHover={{ y: -2 }}
+              >
+                Tholumuzi.dev
+                <motion.span 
+                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-code-blue via-code-purple to-code-pink group-hover:w-full" 
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                ></motion.span>
+              </motion.span>
+              <motion.span 
+                className="text-xs text-foreground/60 font-mono block -mt-1"
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Software Developer
+              </motion.span>
+            </div>
           </Link>
           
           <nav className="hidden md:flex items-center gap-8">
