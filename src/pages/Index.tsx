@@ -7,9 +7,11 @@ import BackgroundEffects from '@/components/BackgroundEffects';
 import FallingCodeParticles from '@/components/FallingCodeParticles';
 import { Toaster } from '@/components/ui/sonner';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     const minLoadTime = setTimeout(() => {
@@ -30,7 +32,7 @@ const Index = () => {
       
       {/* Background visual elements */}
       <BackgroundEffects />
-      <FallingCodeParticles />
+      <FallingCodeParticles count={isMobile ? 15 : 30} speed={isMobile ? 15 : 20} />
       
       <Navbar />
       
