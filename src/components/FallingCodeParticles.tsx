@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
+interface FallingCodeParticlesProps {
+  count?: number;
+  speed?: number;
+}
+
 interface Particle {
   id: number;
   x: number;
@@ -29,7 +34,7 @@ const colors = [
   'var(--code-yellow)'
 ];
 
-const FallingCodeParticles = () => {
+const FallingCodeParticles: React.FC<FallingCodeParticlesProps> = ({ count = 20, speed = 1 }) => {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1000,
@@ -51,8 +56,8 @@ const FallingCodeParticles = () => {
     // Generate initial particles
     const initialParticles: Particle[] = [];
     const particleCount = isMobile 
-      ? Math.min(Math.floor(windowSize.width / 80), 15) // Fewer particles on mobile
-      : Math.min(Math.floor(windowSize.width / 40), 30); // Regular count for desktop
+      ? Math.min(Math.floor(windowSize.width / 80), count / 2) // Fewer particles on mobile
+      : Math.min(Math.floor(windowSize.width / 40), count); // Regular count for desktop
     
     for (let i = 0; i < particleCount; i++) {
       initialParticles.push(createParticle(windowSize.width, i, windowSize.width, particleCount));
@@ -72,7 +77,7 @@ const FallingCodeParticles = () => {
         setParticles(prevParticles => 
           prevParticles.map(particle => {
             // Move particle down
-            const newY = particle.y + particle.speed;
+            const newY = particle.y + (particle.speed * speed);
             
             // Reset particle if it's off screen
             if (newY > windowSize.height) {
@@ -96,7 +101,7 @@ const FallingCodeParticles = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [windowSize.height, windowSize.width, isMobile]);
+  }, [windowSize.height, windowSize.width, isMobile, count, speed]);
 
   const createParticle = (width: number, index?: number, totalWidth?: number, totalParticles?: number): Particle => {
     // For better distribution across the width
