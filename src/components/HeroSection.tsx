@@ -51,42 +51,35 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen pt-24 pb-16 flex flex-col justify-center overflow-hidden">
+    <section className="min-h-screen pt-24 pb-16 flex flex-col justify-center relative overflow-hidden">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Enhanced background elements */}
         <div className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-code-blue/20 via-code-purple/20 to-code-pink/20 blur-3xl animate-pulse" />
         <div className="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-code-yellow/20 via-code-green/20 to-code-blue/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         
-        {/* Glowing dots */}
         <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-code-green animate-ping" style={{ animationDuration: '3s' }} />
         <div className="absolute top-[60%] right-[25%] w-3 h-3 rounded-full bg-code-yellow animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
         <div className="absolute bottom-[30%] left-[40%] w-2 h-2 rounded-full bg-code-blue animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
         <div className="absolute top-[35%] right-[40%] w-2 h-2 rounded-full bg-code-pink animate-ping" style={{ animationDuration: '3.5s', animationDelay: '0.7s' }} />
         <div className="absolute bottom-[40%] right-[15%] w-3 h-3 rounded-full bg-code-purple animate-ping" style={{ animationDuration: '4.5s', animationDelay: '1.2s' }} />
         
-        {/* Code symbols */}
         <div className="absolute top-[25%] left-[30%] text-code-green/20 font-mono text-xl animate-float" style={{ animationDuration: '6s' }}>{'<>'}</div>
         <div className="absolute bottom-[35%] right-[30%] text-code-blue/20 font-mono text-xl animate-float" style={{ animationDuration: '7s', animationDelay: '1s' }}>{'/>'}</div>
         <div className="absolute top-[45%] right-[20%] text-code-purple/20 font-mono text-xl animate-float" style={{ animationDuration: '8s', animationDelay: '2s' }}>{'{ }'}</div>
         
-        {/* Larger code symbols for desktop */}
         <div className="hidden lg:block absolute top-[15%] left-[5%] text-code-green/10 font-mono text-6xl">&#123;</div>
         <div className="hidden lg:block absolute bottom-[15%] right-[5%] text-code-purple/10 font-mono text-6xl">&#125;</div>
         <div className="hidden lg:block absolute top-[25%] right-[15%] text-code-blue/10 font-mono text-4xl">&lt;/&gt;</div>
         
-        {/* Horizontal light beams */}
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-code-blue/20 to-transparent"></div>
-        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-code-purple/20 to-transparent"></div>
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-code-blue/20 to-transparent transform -translate-y-1/2"></div>
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-code-purple/20 to-transparent transform -translate-y-1/2"></div>
       </div>
       
-      {/* Main content with improved layout */}
-      <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left content - Introduction */}
+      <div className="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="lg:col-span-6 space-y-8"
+          className="space-y-8"
         >
           <motion.div
             variants={itemVariants}
@@ -113,10 +106,11 @@ const HeroSection = () => {
             Let's build something <span className="gradient-text font-bold">extraordinary</span> together.
           </motion.p>
           
-          {/* Social media links with improved styling */}
+          {/* View My Work button removed */}
+          
           <motion.div
             variants={itemVariants}
-            className="flex items-center gap-4 pt-4 flex-wrap"
+            className="flex items-center gap-4 pt-4"
           >
             <motion.a 
               href="https://github.com/tholumuzikhuboni" 
@@ -155,48 +149,23 @@ const HeroSection = () => {
               <Facebook className="h-5 w-5" />
             </motion.a>
           </motion.div>
-          
-          {/* Skills badges - New addition */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-2 pt-2"
-          >
-            {['React', 'TypeScript', 'UI/UX', 'Clean Code', 'Responsive Design'].map((skill, index) => (
-              <motion.div
-                key={skill}
-                className="bg-white/5 backdrop-blur-sm text-sm font-mono px-3 py-1 rounded-full border border-white/10"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.5 + (index * 0.1) }}
-                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
-              >
-                {skill}
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
         
-        {/* Right content - Code Card with enhanced styling */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="lg:col-span-6 w-full max-w-xl mx-auto lg:mx-0 relative"
+          className="w-full max-w-xl mx-auto lg:mx-0 relative"
         >
-          {/* Glow effect behind the card */}
           <div className="absolute -inset-1 bg-gradient-to-r from-code-blue via-code-purple to-code-pink rounded-xl blur opacity-30 animate-pulse"></div>
-          
-          {/* Corner decorations */}
           <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-code-blue/30 rounded-tl-lg"></div>
           <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-code-purple/30 rounded-br-lg"></div>
           
-          {/* File name label */}
           <div className="absolute -top-6 right-6 bg-code-green/10 p-1 rounded text-xs font-mono text-code-green border border-code-green/20 animate-float" style={{ animation: 'float 3s ease-in-out infinite' }}>
             <Layers className="h-3 w-3 inline mr-1" />
             code.tsx
           </div>
           
-          {/* Code block with animation */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
@@ -214,13 +183,11 @@ const HeroSection = () => {
             }
           </motion.div>
           
-          {/* Decorative elements around the code block */}
           <div className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full bg-code-yellow/20"></div>
           <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-code-green/20"></div>
           <div className="absolute bottom-10 -right-4 w-3 h-3 rounded-full bg-code-blue/20"></div>
           <div className="absolute top-10 -left-4 w-3 h-3 rounded-full bg-code-purple/20"></div>
           
-          {/* Light beam effects */}
           <motion.div 
             className="absolute -top-3 left-1/3 h-12 w-4"
             initial={{ opacity: 0.3 }}
