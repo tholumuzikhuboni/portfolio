@@ -37,7 +37,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
       className={`font-mono text-sm sm:text-base overflow-hidden rounded-lg backdrop-blur-sm border border-white/10 p-4 sm:p-6 ${className}`}
       style={{ 
         boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
-        backgroundColor: 'rgba(0, 0, 0, 0.05)'  // Changed to very transparent background
+        backgroundColor: 'transparent'  // Setting transparent background
       }}
     >
       {isRevealed ? (

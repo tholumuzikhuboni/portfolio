@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import CodeBlock from './CodeBlock';
 import { motion } from 'framer-motion';
@@ -105,33 +106,7 @@ const HeroSection = () => {
             Let's build something <span className="gradient-text font-bold">extraordinary</span> together.
           </motion.p>
           
-          <motion.div 
-            variants={itemVariants}
-            className="flex items-center gap-4 flex-nowrap overflow-x-auto sm:flex-wrap"
-          >
-            <motion.div 
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link 
-                to="/projects"
-                className="group bg-gradient-to-r from-code-blue to-code-purple text-white py-4 px-8 rounded-md font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap text-base sm:text-lg"
-              >
-                <Search className="h-5 w-5" />
-                <span className="font-mono">View My Work</span>
-                <motion.span
-                  initial={{ x: 0, opacity: 0.5 }}
-                  animate={{ x: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </motion.span>
-              </Link>
-            </motion.div>
-          </motion.div>
+          {/* View My Work button removed */}
           
           <motion.div
             variants={itemVariants}
